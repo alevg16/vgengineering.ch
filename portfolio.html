@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VG Engineering — Concept studies for stuck mechanical problems</title>
-<meta name="description" content="Stuck on a mechanical problem? Send it to VG Engineering. In 5 working days you get 3–4 distinct solution concepts with sketches, rationale, tradeoffs and a clear recommendation. Flat fee.">
+<title>Sample concept studies — VG Engineering</title>
+<meta name="description" content="Four concept studies by VG Engineering: chalk resistance, a seabed drilling rover, termite-inspired passive cooling, and the Oyster microfibre filter.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -27,40 +27,28 @@
   }
   body{
     font-family:'IBM Plex Sans',system-ui,sans-serif;
-    color:var(--ink);
-    background:var(--paper);
-    line-height:1.6;
-    font-size:17px;
+    color:var(--ink);background:var(--paper);
+    line-height:1.6;font-size:17px;
   }
   ::selection{background:var(--navy);color:var(--paper);}
   a{color:var(--navy);}
-  a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offset:3px;}
-
-  /* ---- drawing-sheet frame ---- */
+  a:focus-visible{outline:2px solid var(--focus);outline-offset:3px;}
   .sheet{
-    max-width:1140px;
-    margin:0 auto;
+    max-width:1140px;margin:0 auto;
     border-left:1px solid var(--hairline);
     border-right:1px solid var(--hairline);
     min-height:100vh;
   }
-  .mono{font-family:'IBM Plex Mono',monospace;}
   .label{
     font-family:'IBM Plex Mono',monospace;
-    font-size:11px;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:var(--steel);
+    font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--steel);
   }
-
-  /* ---- header ---- */
   header{
     display:flex;justify-content:space-between;align-items:center;
-    padding:18px 40px;
-    border-bottom:1px solid var(--hairline);
+    padding:18px 40px;border-bottom:1px solid var(--hairline);
     position:sticky;top:0;background:rgba(255,255,255,.94);
-    backdrop-filter:blur(6px);
-    z-index:10;
+    backdrop-filter:blur(6px);z-index:10;
   }
   .wordmark{
     font-family:'IBM Plex Sans Condensed',sans-serif;
@@ -68,225 +56,88 @@
     color:var(--ink);text-decoration:none;
     display:flex;align-items:baseline;gap:9px;
   }
-  .wordmark .vg{
-    background:var(--navy);color:var(--paper);
-    padding:2px 8px 3px;
-  }
+  .wordmark .vg{background:var(--navy);color:var(--paper);padding:2px 8px 3px;}
   nav{display:flex;gap:28px;}
-  nav a{
-    text-decoration:none;color:var(--ink);
-    font-size:14px;font-weight:500;
-  }
+  nav a{text-decoration:none;color:var(--ink);font-size:14px;font-weight:500;}
   nav a:hover{color:var(--navy);text-decoration:underline;text-underline-offset:5px;}
-  @media(max-width:760px){
-    header{padding:14px 20px;}
-    nav{display:none;}
-  }
+  @media(max-width:760px){header{padding:14px 20px;} nav{display:none;}}
 
-  /* ---- hero ---- */
-  .hero{
-    padding:90px 40px 70px;
-    border-bottom:1px solid var(--hairline);
-    position:relative;
+  .page-head{
+    padding:70px 40px 56px;border-bottom:1px solid var(--hairline);
   }
-  .hero h1{
+  .page-head h1{
     font-family:'IBM Plex Sans Condensed',sans-serif;
-    font-weight:700;
-    font-size:clamp(42px,6.4vw,76px);
-    line-height:1.02;
-    letter-spacing:-.01em;
-    max-width:13ch;
-  }
-  .hero h1 em{
-    font-style:normal;color:var(--navy);
-    box-shadow:inset 0 -0.32em 0 rgba(14,42,74,.12);
-  }
-  .hero p.lede{
-    margin-top:28px;max-width:54ch;font-size:19px;color:#27313D;
-  }
-  .cta-row{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap;}
-  .btn{
-    display:inline-block;text-decoration:none;
-    font-weight:600;font-size:15px;
-    padding:14px 26px;border:1px solid var(--navy);
-  }
-  .btn-primary{background:var(--navy);color:var(--paper);}
-  .btn-primary:hover{background:var(--navy-deep);}
-  .btn-ghost{background:transparent;color:var(--navy);}
-  .btn-ghost:hover{background:var(--paper-dim);}
-
-  /* dimension tick under hero headline */
-  .dim{
-    margin-top:46px;display:flex;align-items:center;gap:10px;
-    max-width:430px;
-  }
-  .dim .line{flex:1;height:1px;background:var(--steel);position:relative;}
-  .dim .line::before,.dim .line::after{
-    content:"";position:absolute;top:-4px;width:1px;height:9px;background:var(--steel);
-  }
-  .dim .line::before{left:0;} .dim .line::after{right:0;}
-  .dim span{white-space:nowrap;}
-
-  /* title block — the signature */
-  .titleblock{
-    position:absolute;right:40px;bottom:-1px;
-    border:1px solid var(--hairline);border-bottom:none;
-    background:var(--paper);
-    display:grid;grid-template-columns:auto auto;
-    font-family:'IBM Plex Mono',monospace;font-size:11px;
-  }
-  .titleblock div{
-    padding:7px 14px;border-top:1px solid var(--hairline);
-  }
-  .titleblock div:nth-child(odd){
-    color:var(--steel);border-right:1px solid var(--hairline);
-    letter-spacing:.1em;text-transform:uppercase;
-  }
-  .titleblock div:nth-child(-n+2){border-top:none;}
-  @media(max-width:760px){
-    .hero{padding:64px 20px 56px;}
-    .titleblock{display:none;}
-  }
-
-  /* ---- sections ---- */
-  section{padding:80px 40px;border-bottom:1px solid var(--hairline);}
-  @media(max-width:760px){section{padding:60px 20px;}}
-  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:36px;}
-  .sec-head h2{
-    font-family:'IBM Plex Sans Condensed',sans-serif;
-    font-weight:700;font-size:clamp(28px,3.6vw,40px);line-height:1.1;
-  }
-  .prose{max-width:62ch;font-size:18px;color:#27313D;}
-  .prose + .prose{margin-top:18px;}
-  .prose strong{color:var(--ink);}
-
-  /* what you get */
-  .deliverable{
-    margin-top:44px;
-    border:1px solid var(--hairline);
-    display:grid;grid-template-columns:1fr 1fr;
-  }
-  .deliverable .cell{
-    padding:26px 28px;border-top:1px solid var(--hairline);
-  }
-  .deliverable .cell:nth-child(-n+2){border-top:none;}
-  .deliverable .cell:nth-child(odd){border-right:1px solid var(--hairline);}
-  .deliverable h3{
-    font-size:16px;font-weight:600;margin-bottom:6px;color:var(--navy);
-  }
-  .deliverable p{font-size:15px;color:#3A4350;}
-  @media(max-width:760px){
-    .deliverable{grid-template-columns:1fr;}
-    .deliverable .cell{border-right:none!important;}
-    .deliverable .cell:nth-child(2){border-top:1px solid var(--hairline);}
-  }
-
-  /* how it works — true sequence, numbering justified */
-  .steps{margin-top:10px;display:grid;gap:0;}
-  .step{
-    display:grid;grid-template-columns:84px 1fr;gap:26px;
-    padding:30px 0;border-top:1px solid var(--hairline);
-  }
-  .step:first-child{border-top:none;}
-  .step .no{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:13px;color:var(--steel);padding-top:5px;
-  }
-  .step h3{font-size:19px;font-weight:600;margin-bottom:6px;}
-  .step p{max-width:60ch;color:#3A4350;font-size:16px;}
-  @media(max-width:760px){.step{grid-template-columns:1fr;gap:8px;}}
-
-  /* portfolio */
-  .work-grid{
-    margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:0;
-    border:1px solid var(--hairline);
-  }
-  .work{
-    padding:30px;min-height:210px;display:flex;flex-direction:column;gap:10px;
-    border-top:1px solid var(--hairline);
-  }
-  .work:nth-child(-n+2){border-top:none;}
-  .work:nth-child(odd){border-right:1px solid var(--hairline);}
-  .work h3{font-size:19px;font-weight:600;}
-  .work p{font-size:15px;color:#3A4350;flex:1;}
-  .work .label{margin-bottom:2px;}
-  @media(max-width:760px){
-    .work-grid{grid-template-columns:1fr;}
-    .work{border-right:none!important;}
-    .work:nth-child(2){border-top:1px solid var(--hairline);}
-  }
-  .work-note{margin-top:22px;font-size:15px;color:var(--steel);}
-  a.work{text-decoration:none;color:inherit;transition:background .15s ease;}
-  a.work:hover{background:var(--paper-dim);}
-  a.work .more{
-    font-family:'IBM Plex Mono',monospace;font-size:12.5px;
-    color:var(--navy);font-weight:500;letter-spacing:.04em;
-  }
-  a.work:hover .more{text-decoration:underline;text-underline-offset:4px;}
-
-  /* open door panel */
-  .open-door{
-    margin-top:0;border:1px solid var(--hairline);border-top:none;
-    background:var(--paper-dim);
-    padding:26px 28px;
-  }
-  .open-door h3{font-size:16px;font-weight:600;margin-bottom:6px;color:var(--navy);}
-  .open-door p{font-size:15px;color:#3A4350;max-width:75ch;}
-
-  /* cover-letter pull quote */
-  .pullquote{
-    margin-top:32px;border-left:3px solid var(--navy);
-    padding:6px 0 6px 24px;
-  }
-  .pullquote blockquote{
-    font-size:18px;line-height:1.55;color:var(--ink);
-    font-style:italic;max-width:54ch;
-  }
-  .pullquote .label{display:block;margin-top:12px;}
-
-  /* about */
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
-  @media(max-width:860px){.about-grid{grid-template-columns:1fr;}}
-  .cred{
-    border:1px solid var(--hairline);
-  }
-  .cred li{
-    list-style:none;display:grid;grid-template-columns:120px 1fr;
-    padding:14px 20px;border-top:1px solid var(--hairline);
-    font-size:15px;gap:14px;
-  }
-  .cred li:first-child{border-top:none;}
-  .cred .label{padding-top:3px;}
-
-  /* contact / close */
-  .close{
-    background:var(--navy);color:var(--paper);
-    border-bottom:none;
-  }
-  .close h2{
-    font-family:'IBM Plex Sans Condensed',sans-serif;
-    font-weight:700;font-size:clamp(30px,4.4vw,52px);line-height:1.05;
+    font-weight:700;font-size:clamp(36px,5vw,58px);line-height:1.04;
     max-width:18ch;
   }
-  .close p{margin-top:20px;max-width:54ch;color:#C8D4E2;font-size:18px;}
-  .close .btn{border-color:var(--paper);}
-  .close .btn-primary{background:var(--paper);color:var(--navy);}
-  .close .btn-primary:hover{background:#E8EDF3;}
-  .close .btn-ghost{color:var(--paper);}
-  .close .btn-ghost:hover{background:rgba(255,255,255,.08);}
-  .close .label{color:#9FB3C9;}
-  .contact-line{margin-top:40px;font-size:15px;color:#C8D4E2;}
-  .contact-line a{color:var(--paper);}
+  .page-head p{margin-top:18px;max-width:60ch;font-size:18px;color:#27313D;}
+  @media(max-width:760px){.page-head{padding:54px 20px 44px;}}
 
-  /* footer title block strip */
+  /* study sections */
+  .study{padding:80px 40px;border-bottom:1px solid var(--hairline);scroll-margin-top:70px;}
+  @media(max-width:760px){.study{padding:60px 20px;}}
+  .study .label{display:block;margin-bottom:14px;}
+  .study h2{
+    font-family:'IBM Plex Sans Condensed',sans-serif;
+    font-weight:700;font-size:clamp(26px,3.4vw,38px);line-height:1.1;
+  }
+  .study .subtitle{margin-top:8px;font-size:18px;color:#3A4350;max-width:62ch;}
+  .study h3{
+    margin-top:38px;margin-bottom:10px;
+    font-size:14px;font-weight:600;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--navy);
+    padding-bottom:8px;border-bottom:1px solid var(--hairline);
+    max-width:62ch;
+  }
+  .study p{max-width:62ch;color:#27313D;font-size:16.5px;}
+  .study p + p{margin-top:12px;}
+  .study p strong{color:var(--ink);}
+  .study ul{max-width:62ch;margin-left:20px;color:#27313D;font-size:16.5px;}
+  .study li{margin-top:8px;}
+
+  figure{margin:34px 0 6px;border:1px solid var(--hairline);}
+  figure img{display:block;width:100%;height:auto;}
+  figcaption{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;
+    color:var(--steel);padding:10px 14px;
+    border-top:1px solid var(--hairline);letter-spacing:.04em;
+  }
+  .fig-pair{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  @media(max-width:760px){.fig-pair{grid-template-columns:1fr;gap:0;}}
+
+  .back-row{margin-top:40px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+  .back-row a{
+    font-size:14px;font-weight:600;text-decoration:none;
+    font-family:'IBM Plex Mono',monospace;letter-spacing:.04em;
+  }
+  .back-row a:hover{text-decoration:underline;text-underline-offset:5px;}
+  .pdf-btn{
+    display:inline-block;background:var(--navy);color:var(--paper)!important;
+    padding:11px 20px;border:1px solid var(--navy);
+  }
+  .pdf-btn:hover{background:var(--navy-deep);text-decoration:none!important;}
+
+  /* close */
+  .close{background:var(--navy);color:var(--paper);padding:80px 40px;}
+  @media(max-width:760px){.close{padding:60px 20px;}}
+  .close h2{
+    font-family:'IBM Plex Sans Condensed',sans-serif;
+    font-weight:700;font-size:clamp(28px,4vw,46px);line-height:1.05;max-width:20ch;
+  }
+  .close p{margin-top:18px;max-width:54ch;color:#C8D4E2;font-size:18px;}
+  .close .label{color:#9FB3C9;}
+  .btn{
+    display:inline-block;text-decoration:none;font-weight:600;font-size:15px;
+    padding:14px 26px;border:1px solid var(--paper);margin-top:32px;
+    background:var(--paper);color:var(--navy);
+  }
+  .btn:hover{background:#E8EDF3;}
   footer{
     border-top:1px solid var(--hairline);
     display:grid;grid-template-columns:repeat(4,1fr);
     font-family:'IBM Plex Mono',monospace;font-size:11px;
   }
-  footer div{
-    padding:12px 20px;border-right:1px solid var(--hairline);
-  }
+  footer div{padding:12px 20px;border-right:1px solid var(--hairline);}
   footer div:last-child{border-right:none;}
   footer .k{color:var(--steel);letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:2px;}
   @media(max-width:760px){
@@ -299,209 +150,166 @@
 <div class="sheet">
 
   <header>
-    <a class="wordmark" href="#top"><span class="vg">VG</span> ENGINEERING</a>
+    <a class="wordmark" href="index.html"><span class="vg">VG</span> ENGINEERING</a>
     <nav aria-label="Main">
-      <a href="#offer">The offer</a>
-      <a href="#process">Process</a>
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html#offer">The offer</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
     </nav>
   </header>
 
-  <!-- HERO -->
-  <div class="hero" id="top">
-    <p class="label" style="margin-bottom:22px;">Mechanical engineering · Concept studies · Rapid prototyping · Switzerland</p>
-    <h1>Stuck on a mechanical problem? <em>Send it to me.</em></h1>
-    <p class="lede">In <strong>5 working days</strong> you get 3–4 genuinely different solution concepts — each with a sketch, the engineering rationale, the tradeoffs, and a clear recommendation. Fixed scope, flat fee, no strings.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="https://tally.so/r/REPLACE">Request a quote</a>
-      <a class="btn btn-ghost" href="https://calendly.com/REPLACE">Book a 15-min call</a>
-    </div>
-    <div class="dim">
-      <div class="line" aria-hidden="true"></div>
-      <span class="label">problem in → concepts out: 5 working days</span>
-      <div class="line" aria-hidden="true"></div>
-    </div>
-
-    <div class="titleblock" aria-hidden="true">
-      <div>Project</div><div>Your stuck problem</div>
-      <div>Drawn by</div><div>A. Vargas Gonzalez</div>
-      <div>Scale</div><div>5 working days</div>
-      <div>Rev</div><div>A — first principles</div>
-    </div>
+  <div class="page-head">
+    <p class="label" style="margin-bottom:16px;">Sample concept studies</p>
+    <h1>Four problems, taken from stuck to decided.</h1>
+    <p>Different domains — test engineering, subsea machinery, building physics, consumer products — but the same method every time: strip the problem to physics, generate genuinely distinct options, judge them honestly, and put a recommendation on the table.</p>
   </div>
 
-  <!-- THE MOMENT -->
-  <section id="offer">
-    <div class="sec-head">
-      <span class="label">01 / The moment</span>
-      <h2>You know the moment.</h2>
+  <!-- CHALK -->
+  <section class="study" id="chalk">
+    <span class="label">Study 01 · Constraint-driven problem-solving · Solo project</span>
+    <h2>Measuring the Unmeasured — chalk resistance</h2>
+    <p class="subtitle">Quantifying the mechanical limits of school chalk with no lab, no testing machine, and no reference data to compare against.</p>
+
+    <h3>The stuck problem</h3>
+    <p>Find the failure strength of ordinary chalk under five load types — bending, tension, shear, torsion and compression — using only household tools. Each load type had to be isolated cleanly, or the number would be meaningless.</p>
+
+    <div class="fig-pair">
+      <figure>
+        <img src="assets/chalk-compression-rig.jpg" alt="Improvised compression test rig: a metal cylinder held vertical by four guide wires on a wooden board" loading="lazy">
+        <figcaption>Compression rig — a box-spanner piston in a slotted cylinder, kept axial by four guide wires, improvised from household parts.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/chalk-torsion-fracture.jpg" alt="Chalk sample showing a helicoidal fracture surface next to the torsion rig" loading="lazy">
+        <figcaption>Characteristic helicoidal fracture from the torsion rig — evidence the load was correctly isolated.</figcaption>
+      </figure>
     </div>
-    <p class="prose">The design review went in circles. The prototype failed the same way twice. The supplier says it can't be made, the deadline hasn't moved, and everyone on the team is now defending their own corner instead of attacking the problem.</p>
-    <p class="prose">What you need isn't another meeting. It's <strong>fresh eyes and genuinely different options</strong> — laid out honestly enough that you can pick one and move.</p>
-    <p class="prose">And it's not only stuck teams. Maybe you're a founder or an inventor with an idea that lives on a napkin — a product you believe in but no mechanical engineer in the room. <strong>You don't need a finished spec to start;</strong> a clear description of what you're trying to achieve is enough. I'll help turn it into concepts you can build, fund, or test.</p>
-    <p class="prose">That's the whole service. You send me the problem. I work it from first principles. Five working days later, you have a concept study on your desk — and if you want to keep going from there, so do I.</p>
+
+    <h3>Concepts generated</h3>
+    <p><strong>Bending &amp; tension — water-bottle load cells.</strong> A bottle filled gradually until fracture, weighed on a kitchen scale, gave a repeatable force. Two opposed constrictor knots kept the tension load perfectly axial.</p>
+    <p><strong>Pure shear — twin-plate guillotine, v2.</strong> The first rig let the sliding plate rotate, binding on its rails and adding friction that corrupted the reading. Fix: a larger contact surface and four guide rods instead of two, removing the parasitic moment.</p>
+    <p><strong>Torsion &amp; compression — isolation rigs.</strong> A grease-packed homemade bearing isolated torsion (residual friction measured and subtracted); a piston-and-cylinder press, borrowed from hydraulic-press principle, kept a high compressive load axial where a simple stack would topple.</p>
+
+    <h3>Outcome</h3>
+    <p>Consistent, physically sensible failure values across all five cases — with variance tightest for the simplest rig and widening as the apparatus grew, exactly as expected. The real deliverable: a documented method for reaching a defensible answer from nothing but improvised tools and clear reasoning.</p>
+
+    <div class="back-row"><a class="pdf-btn" href="pdf/chalk-resistance.pdf" download>Download this study (PDF) &darr;</a><a href="index.html#work">← Back to all studies</a></div>
   </section>
 
-  <!-- WHAT YOU GET -->
-  <section>
-    <div class="sec-head">
-      <span class="label">02 / The deliverable</span>
-      <h2>One concept study. Everything you need to decide.</h2>
-    </div>
-    <p class="prose">Not a slide deck of vague directions — a working document, built the way a good design review should run:</p>
-    <div class="deliverable">
-      <div class="cell">
-        <h3>The problem, restated</h3>
-        <p>Your problem in my words, with the constraints and success criteria pinned down — so we both know exactly what "solved" means before any concept is judged.</p>
-      </div>
-      <div class="cell">
-        <h3>3–4 distinct concepts</h3>
-        <p>Genuinely different routes to the goal, not variations on one idea. Each comes with a sketch, how it works, why it fits your constraints, and its maturity: proven, needs prototyping, or speculative.</p>
-      </div>
-      <div class="cell">
-        <h3>Tradeoffs, named honestly</h3>
-        <p>Cost, complexity, manufacturability, risk — compared side by side in one table. The weaknesses are written down too. You're paying for judgement, not optimism.</p>
-      </div>
-      <div class="cell">
-        <h3>A clear recommendation</h3>
-        <p>Which concept I'd pursue, why, and the first concrete step to de-risk it. You leave with a decision you can defend, not homework.</p>
-      </div>
-    </div>
-    <div class="open-door">
-      <h3>And the study is a starting point, not a dead end</h3>
-      <p>If you want to take the chosen concept further, we can keep working together: detailed development of the design, <strong>rapid prototyping</strong> — from simple 3D-printed models and functional test pieces up to a full working prototype — and support through to validation. Each follow-on stage gets its own scope and quote, so you stay in control and only commit to what's worth committing to.</p>
-    </div>
+  <!-- ROVER -->
+  <section class="study" id="rover">
+    <span class="label">Study 02 · Structured concept generation · Solo project</span>
+    <h2>Seabed Drilling Rover</h2>
+    <p class="subtitle">Embodiment design for a remotely operated tool that drills the ocean floor — a novel machine with no off-the-shelf precedent to copy.</p>
+
+    <h3>The stuck problem</h3>
+    <p>Develop an early seabed-drilling concept into a defensible embodiment design: size the components, choose materials, identify failure modes, and estimate cost — all under deep uncertainty.</p>
+
+    <figure>
+      <img src="assets/rover-sketch.jpg" alt="Hand sketches of the seabed drilling rover: deployment sequence from a vessel and the device with labelled subsystems" loading="lazy">
+      <figcaption>Final concept and deployment sequence — sealed chassis, in-wheel motors, swing-arm suspension, modular drill unit.</figcaption>
+    </figure>
+
+    <h3>Concepts generated</h3>
+    <p><strong>Architecture — sealed chassis + modular drill.</strong> A cable-and-winch-deployed sealed chassis, with the drill mounted on silent-blocks like a car engine, isolating vibration and keeping the design modular.</p>
+    <p><strong>Mobility — in-wheel motors + swing arms.</strong> Four independent in-wheel motors, with Mars-rover-inspired swing-arm suspension that adapts to uneven seabed and locks flat while drilling.</p>
+    <p><strong>Material &amp; process selection.</strong> Ashby-chart selection against explicit objectives — leak-before-break for the chassis, hardness and corrosion resistance for the wheels, flexibility-without-failure for the arms — each paired with a realistic manufacturing route.</p>
+
+    <h3>De-risking the design</h3>
+    <ul>
+      <li><strong>Cost model:</strong> bottom-up estimate by subsystem, with adaptation factors for bespoke development.</li>
+      <li><strong>FMEA:</strong> every subsystem rated severity × probability — surfacing the winch cable and the chassis seal as the risks to control first.</li>
+    </ul>
+
+    <div class="back-row"><a class="pdf-btn" href="pdf/seabed-drilling-rover.pdf" download>Download this study (PDF) &darr;</a><a href="index.html#work">← Back to all studies</a></div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section id="process">
-    <div class="sec-head">
-      <span class="label">03 / The process</span>
-      <h2>Four steps, one week — and an open road after.</h2>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <div class="no">STEP 1</div>
-        <div>
-          <h3>Send the problem</h3>
-          <p>A short intake form: what you're trying to solve, the hard constraints, and — most valuable of all — what you've already tried. Drawings and photos welcome. Takes about 10 minutes.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="no">STEP 2</div>
-        <div>
-          <h3>Scope &amp; quote</h3>
-          <p>Within one working day I confirm scope, timing and a flat fee, and we have a short kickoff call so I understand the problem the way you live it.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="no">STEP 3</div>
-        <div>
-          <h3>I work it</h3>
-          <p>Five working days of first-principles concept work: research, sketching, rough sizing, sanity checks against your constraints. No status meetings — your time stays yours.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="no">STEP 4</div>
-        <div>
-          <h3>Delivery &amp; walkthrough</h3>
-          <p>You get the concept study plus a call to walk through it, challenge it, and decide the next move. The flat-fee engagement is complete here — no strings.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="no">STEP 5<br>(OPTIONAL)</div>
-        <div>
-          <h3>Go further, together</h3>
-          <p>If a concept earns it, we continue: detailed design development, rapid prototyping — 3D-printed models, functional test pieces, up to a full working prototype — and iteration until it works. Each stage is scoped and quoted separately, so the decision to continue is always yours, never a condition of the study.</p>
-        </div>
-      </div>
-    </div>
+  <!-- TERMITE -->
+  <section class="study" id="termite">
+    <span class="label">Study 03 · Creative reframe / biomimicry · Solo project</span>
+    <h2>Passive Cooling from Termite Mounds</h2>
+    <p class="subtitle">Reframing a big-building cooling principle into a self-regulating family house.</p>
+
+    <h3>The stuck problem</h3>
+    <p>Building cooling consumes a large share of global energy and emissions — and the existing termite-inspired designs exist only at large commercial scale. The challenge: extract the underlying principles and apply them to an ordinary family house that regulates its own temperature with little or no active cooling.</p>
+
+    <figure>
+      <img src="assets/termite-house-sketch.jpg" alt="Hand sketch of a house cross-section showing the convective flow circuit: outer walls, internal high-thermal-mass walls, water sprayer and conduits" loading="lazy">
+      <figcaption>Convective-flow circuit — outer walls drive a stack-effect loop; air is cooled against high-thermal-mass walls and by evaporation, then delivered to the floor.</figcaption>
+    </figure>
+
+    <h3>How the thinking worked</h3>
+    <p><strong>Extract.</strong> Distil the termite mound to its transferable mechanisms — heat-induced convection between low- and high-thermal-mass structures, and Venturi-driven induced flow — rather than copying its shape.</p>
+    <p><strong>Translate.</strong> Re-express those as five concrete design features: an outer air-gap, high-thermal-mass internal walls and conduits, low-mass breathing outer walls, a connected chimney-and-flute network, and an optional water pulveriser for evaporative cooling.</p>
+
+    <h3>Concept &amp; sanity check</h3>
+    <p>The outer walls heat quickly and drive a stack-effect flow; air is cooled against the overnight-charged walls and by evaporation, then delivered to the floor. The loop reverses at night and stops in winter. Rather than asserting it would work, a first-order stack-effect calculation estimated a flow of ~0.46&nbsp;m/s for a 100&nbsp;m² house — enough to show viability and to flag a full thermo-fluids study as the honest next step.</p>
+
+    <div class="back-row"><a class="pdf-btn" href="pdf/termite-passive-cooling.pdf" download>Download this study (PDF) &darr;</a><a href="index.html#work">← Back to all studies</a></div>
   </section>
 
-  <!-- WORK -->
-  <section id="work">
-    <div class="sec-head">
-      <span class="label">04 / Sample studies</span>
-      <h2>How I attack a problem.</h2>
-    </div>
-    <p class="prose" style="margin-bottom:34px;">Four concept studies from my own engineering work — different domains, same method: strip the problem to physics, generate distinct options, judge them honestly.</p>
-    <div class="work-grid">
-      <a class="work" href="portfolio.html#oyster">
-        <span class="label">Filtration · Product design</span>
-        <h3>The Oyster — microfibre filter</h3>
-        <p>A washing-machine-integrated filtration system to keep synthetic microfibres out of the ocean. From concept and FEA through a 3D-printed prototype that captured 75% of fibres in testing.</p>
-        <span class="more">Read the study →</span>
-      </a>
-      <a class="work" href="portfolio.html#termite">
-        <span class="label">Thermal · Bio-inspired</span>
-        <h3>Termite-mound passive cooling</h3>
-        <p>Translating the convection principles of termite mounds into a passive cooling architecture for housing — chimney-flute geometry, thermal mass, and stack-effect sizing from first principles.</p>
-        <span class="more">Read the study →</span>
-      </a>
-      <a class="work" href="portfolio.html#rover">
-        <span class="label">Subsea · Embodiment design</span>
-        <h3>Seabed drilling rover</h3>
-        <p>Concept-to-embodiment design of a tethered 4-wheel-drive seabed drilling vehicle: in-wheel motors, swing-arm suspension, material selection, cost model and failure-mode analysis.</p>
-        <span class="more">Read the study →</span>
-      </a>
-      <a class="work" href="portfolio.html#chalk">
-        <span class="label">Test engineering · First principles</span>
-        <h3>Chalk resistance</h3>
-        <p>Measuring the failure stresses of ordinary chalk in bending, traction, shear, torsion and compression — by designing and building five test rigs from workshop scrap. Resourcefulness as a method.</p>
-        <span class="more">Read the study →</span>
-      </a>
-    </div>
-    <p class="work-note">Each study opens with its sketches, the reasoning, and the outcome — the same anatomy your study will have.</p>
-  </section>
+  <!-- OYSTER -->
+  <section class="study" id="oyster">
+    <span class="label">Study 04 · Concept-to-prototype arc · Team project, my contributions labelled</span>
+    <h2>The Oyster — microfibre filter</h2>
+    <p class="subtitle">A washing-machine filter to capture clothing microfibres before they reach the ocean.</p>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="sec-head">
-      <span class="label">05 / Who you're hiring</span>
-      <h2>Alejandro Vargas Gonzalez</h2>
+    <h3>The stuck problem</h3>
+    <p>Synthetic clothing sheds microfibres too fine for conventional filters, and the products on the market are external add-ons with limited capture. The brief: design a filter that integrates into the washing machine itself, captures around 90% of fibres, survives the machine's full service life, and needs minimal user maintenance.</p>
+
+    <figure>
+      <img src="assets/oyster-cad.jpg" alt="Final CAD render of the Oyster: a cylindrical filter cartridge in a transparent housing mounted on a motor unit" loading="lazy">
+      <figcaption>Final CAD render — the spinning cylindrical filter integrated into a motor housing that mounts inside the machine.</figcaption>
+    </figure>
+
+    <h3>My role on the team</h3>
+    <p>On a five-person team I owned the torque calculations, the stress and fatigue FEA, the final mesh selection, the prototype manufacturing, and a share of the concept sketching. Pump-blade design and the CFD flow study were led by teammates — noted here as context where they connect to my work; the analysis and build below are mine.</p>
+
+    <h3>The core idea: spin the filter to multiply its area</h3>
+    <p>Instead of passing flow through a filter set across the pipe — limited to the pipe's cross-section — spin a cylindrical filter so the flow is driven radially outward against the full cylinder wall. The effective filter area becomes the cylinder's <em>surface</em>, not its cross-section: far more area in the same space, a longer time before the mesh clogs, fewer user interventions. And the cylinder packs into the dead space behind the machine's existing service hatch, leaving the exterior untouched.</p>
+
+    <h3>Sizing and structural validation (my work)</h3>
+    <p><strong>Mesh selection.</strong> A 25&nbsp;µm nylon mesh, weighed against pore size, mechanical strength, cost and recyclability — nylon beat stainless on mass and recyclability while meeting the pore and strength needs.</p>
+    <p><strong>Drive sizing.</strong> Worst-case start-up torque (blades saturated and stationary, snapping to full speed) sized the motor; the realistic case showed an inexpensive 12–18&nbsp;V DC motor was sufficient, keeping cost and added power draw negligible.</p>
+    <p><strong>FEA.</strong> Static and fatigue simulations on the outer case, inner case and propeller. The casing showed a large safety factor and a predicted life far beyond the washing machine's — and the analysis singled out the inner-case shaft crossing as the weakest point.</p>
+
+    <div class="fig-pair">
+      <figure>
+        <img src="assets/oyster-fea.jpg" alt="FEA displacement result on the Oyster inner case, colour map highlighting the shaft crossing region" loading="lazy">
+        <figcaption>FEA displacement on the inner case — the analysis flagged the shaft region as the failure point before any physical test.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/oyster-prototype.jpg" alt="Four photos of the 3D-printed Oyster prototype: assembled unit, mesh cartridge, propeller insert, and the test rig with hoses" loading="lazy">
+        <figcaption>The 3D-printed prototype — assembled unit, mesh cartridge, propeller insert, and the rig connected for testing.</figcaption>
+      </figure>
     </div>
-    <div class="about-grid">
-      <div>
-        <p class="prose">I'm a mechanical development engineer based in Buchs, Switzerland. By day I design next-generation vacuum-valve technology for semiconductor process tools — work where a tolerance is a contract and "almost works" doesn't exist.</p>
-        <p class="prose">Before that I spent three and a half years at Hilti qualifying joining technologies across three countries, and earlier still I led a 19-person student team building a supersonic rocket — where I once took an airbrake from blank page to optimised, 3D-printed prototype in a single week. The thread through all of it: I love the moment a problem looks impossible, because that's where first-principles thinking pays.</p>
-        <div class="pullquote">
-          <blockquote>"When I face a new challenging problem, a thousand ideas spark — designs, materials, tolerances, manufacturing routes — all in a playful mind-game I just love. Engineering isn't a job for me; it's closer to an art, or a game. I don't do it because I must, but because I want to."</blockquote>
-          <span class="label">— from the cover letter that got me the Hilti job, 2022</span>
-        </div>
-        <p class="prose">This service exists because that moment of impossibility is rare inside one company — and everywhere across industry. If you're stuck, I'd genuinely like to see the problem.</p>
-      </div>
-      <ul class="cred">
-        <li><span class="label">Now</span><span>Mechanical Development Engineer, VAT Group — vacuum valves for semiconductor tools</span></li>
-        <li><span class="label">Before</span><span>Development Engineer, Hilti (joining &amp; anchor technology) · Parts Quality, BMW MINI Oxford</span></li>
-        <li><span class="label">Education</span><span>MEng (Hons) Mechanical Engineering, University of Edinburgh</span></li>
-        <li><span class="label">Toolbox</span><span>Concept design · ISO GPS / GD&amp;T · ANSYS thermal &amp; fluids · Siemens NX, SolidWorks · Rapid prototyping &amp; 3D-printed functional models · DFM &amp; root-cause analysis</span></li>
-        <li><span class="label">Languages</span><span>Spanish · English</span></li>
-      </ul>
-    </div>
+
+    <h3>Built and tested</h3>
+    <ul>
+      <li>3D-printed working prototype, tested with real microfibre-laden water at a representative head height: <strong>75.7% capture.</strong></li>
+      <li><strong>Predicted failure, confirmed:</strong> on a repeat run the printed shaft snapped — at exactly the location the FEA had flagged. Root cause: weak inter-layer shear from the print orientation. Fix: steel or a higher-modulus polymer, or injection moulding for the production part.</li>
+    </ul>
+
+    <h3>Outcome</h3>
+    <p>A full arc from an open brief to a costed concept to a tested physical prototype — including a failure the analysis predicted and the test then confirmed. That agreement between model and reality, failure included, is the most useful result an early-stage study can produce: it shows the engineering judgement was sound, not just lucky.</p>
+
+    <div class="back-row"><a class="pdf-btn" href="pdf/oyster-microfibre-filter.pdf" download>Download this study (PDF) &darr;</a><a href="index.html#work">← Back to all studies</a></div>
   </section>
 
   <!-- CLOSE -->
-  <section class="close" id="contact">
-    <span class="label">06 / Start</span>
-    <h2 style="margin-top:14px;">The problem costs you more every week it stays stuck.</h2>
-    <p>Send it over. Within one working day you'll have a scope, a flat-fee quote, and a kickoff slot — and five working days after that, options on the table. From there the road runs as far as you want: developed design, 3D-printed functional models, a full working prototype.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="https://tally.so/r/REPLACE">Request a quote</a>
-      <a class="btn btn-ghost" href="https://calendly.com/REPLACE">Book a 15-min call</a>
-    </div>
-    <p class="contact-line">
-      Prefer email? <a href="mailto:alevg98@gmail.com">alevg98@gmail.com</a> ·
-      <a href="https://linkedin.com/in/alejandro-vargas-gonzalez">LinkedIn</a>
-    </p>
+  <section class="close">
+    <span class="label">Your problem next</span>
+    <h2 style="margin-top:14px;">This is what your problem gets — in five working days.</h2>
+    <p>Concepts sketched, tradeoffs named, a recommendation you can defend. And if you want to go further afterwards — developed design, 3D-printed functional models, a full working prototype — that door stays open. Each study above is also downloadable as a one-page PDF, if you'd rather keep one to hand.</p>
+    <a class="btn" href="https://tally.so/r/VLNXJl">Request a quote</a>
   </section>
 
   <footer aria-label="Site information">
     <div><span class="k">Firm</span>VG Engineering</div>
     <div><span class="k">Location</span>Buchs SG, Switzerland</div>
     <div><span class="k">Contact</span>alevg98@gmail.com</div>
-    <div><span class="k">Sheet</span>1 of 1 · Rev A · 2026</div>
+    <div><span class="k">Sheet</span>2 of 2 · Rev A · 2026</div>
   </footer>
 
 </div>
