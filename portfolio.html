@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample concept studies — VG Engineering</title>
+<meta name="description" content="Four concept studies by VG Engineering: chalk resistance, a seabed drilling rover, termite-inspired passive cooling, and the Oyster microfibre filter.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0E2A4A;
+    --navy-deep:#081B33;
+    --ink:#0B0E13;
+    --paper:#FFFFFF;
+    --paper-dim:#F5F7FA;
+    --hairline:#D7DEE7;
+    --steel:#5A7491;
+    --focus:#1B4F8A;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *,*::before,*::after{animation:none!important;transition:none!important;}
+  }
+  body{
+    font-family:'IBM Plex Sans',system-ui,sans-serif;
+    color:var(--ink);background:var(--paper);
+    line-height:1.6;font-size:17px;
+  }
+  ::selection{background:var(--navy);color:var(--paper);}
+  a{color:var(--navy);}
+  a:focus-visible{outline:2px solid var(--focus);outline-offset:3px;}
+  .sheet{
+    max-width:1140px;margin:0 auto;
+    border-left:1px solid var(--hairline);
+    border-right:1px solid var(--hairline);
+    min-height:100vh;
+  }
+  .label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--steel);
+  }
+  header{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 40px;border-bottom:1px solid var(--hairline);
+    position:sticky;top:0;background:rgba(255,255,255,.94);
+    backdrop-filter:blur(6px);z-index:10;
+  }
+  .wordmark{
+    font-family:'IBM Plex Sans Condensed',sans-serif;
+    font-weight:700;font-size:19px;letter-spacing:.02em;
+    color:var(--ink);text-decoration:none;
+    display:flex;align-items:baseline;gap:9px;
+  }
+  .wordmark .vg{background:var(--navy);color:var(--paper);padding:2px 8px 3px;}
+  nav{display:flex;gap:28px;}
+  nav a{text-decoration:none;color:var(--ink);font-size:14px;font-weight:500;}
+  nav a:hover{color:var(--navy);text-decoration:underline;text-underline-offset:5px;}
+  @media(max-width:760px){header{padding:14px 20px;} nav{display:none;}}
+
+  .page-head{
+    padding:70px 40px 56px;border-bottom:1px solid var(--hairline);
+  }
+  .page-head h1{
+    font-family:'IBM Plex Sans Condensed',sans-serif;
+    font-weight:700;font-size:clamp(36px,5vw,58px);line-height:1.04;
+    max-width:18ch;
+  }
+  .page-head p{margin-top:18px;max-width:60ch;font-size:18px;color:#27313D;}
+  @media(max-width:760px){.page-head{padding:54px 20px 44px;}}
+
+  /* study sections */
+  .study{padding:80px 40px;border-bottom:1px solid var(--hairline);scroll-margin-top:70px;}
+  @media(max-width:760px){.study{padding:60px 20px;}}
+  .study .label{display:block;margin-bottom:14px;}
+  .study h2{
+    font-family:'IBM Plex Sans Condensed',sans-serif;
+    font-weight:700;font-size:clamp(26px,3.4vw,38px);line-height:1.1;
+  }
+  .study .subtitle{margin-top:8px;font-size:18px;color:#3A4350;max-width:62ch;}
+  .study h3{
+    margin-top:38px;margin-bottom:10px;
+    font-size:14px;font-weight:600;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--navy);
+    padding-bottom:8px;border-bottom:1px solid var(--hairline);
+    max-width:62ch;
+  }
+  .study p{max-width:62ch;color:#27313D;font-size:16.5px;}
+  .study p + p{margin-top:12px;}
+  .study p strong{color:var(--ink);}
+  .study ul{max-width:62ch;margin-left:20px;color:#27313D;font-size:16.5px;}
+  .study li{margin-top:8px;}
+
+  figure{margin:34px 0 6px;border:1px solid var(--hairline);}
+  figure img{display:block;width:100%;height:auto;}
+  figcaption{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;
+    color:var(--steel);padding:10px 14px;
+    border-top:1px solid var(--hairline);letter-spacing:.04em;
+  }
+  .fig-pair{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  @media(max-width:760px){.fig-pair{grid-template-columns:1fr;gap:0;}}
+
+  .back-row{margin-top:40px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+  .back-row a{
+    font-size:14px;font-weight:600;text-decoration:none;
+    font-family:'IBM Plex Mono',monospace;letter-spacing:.04em;
+  }
+  .back-row a:hover{text-decoration:underline;text-underline-offset:5px;}
+  .pdf-btn{
+    display:inline-block;background:var(--navy);color:var(--paper)!important;
+    padding:11px 20px;border:1px solid var(--navy);
+  }
+  .pdf-btn:hover{background:var(--navy-deep);text-decoration:none!important;}
+
+  /* close */
+  .close{background:var(--navy);color:var(--paper);padding:80px 40px;}
+  @media(max-width:760px){.close{padding:60px 20px;}}
+  .close h2{
+    font-family:'IBM Plex Sans Condensed',sans-serif;
+    font-weight:700;font-size:clamp(28px,4vw,46px);line-height:1.05;max-width:20ch;
+  }
+  .close p{margin-top:18px;max-width:54ch;color:#C8D4E2;font-size:18px;}
+  .close .label{color:#9FB3C9;}
+  .btn{
+    display:inline-block;text-decoration:none;font-weight:600;font-size:15px;
+    padding:14px 26px;border:1px solid var(--paper);margin-top:32px;
+    background:var(--paper);color:var(--navy);
+  }
+  .btn:hover{background:#E8EDF3;}
+  footer{
+    border-top:1px solid var(--hairline);
+    display:grid;grid-template-columns:repeat(4,1fr);
+    font-family:'IBM Plex Mono',monospace;font-size:11px;
+  }
+  footer div{padding:12px 20px;border-right:1px solid var(--hairline);}
+  footer div:last-child{border-right:none;}
+  footer .k{color:var(--steel);letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:2px;}
+  @media(max-width:760px){
+    footer{grid-template-columns:1fr 1fr;}
+    footer div:nth-child(2){border-right:none;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header>
+    <a class="wordmark" href="index.html"><span class="vg">VG</span> ENGINEERING</a>
+    <nav aria-label="Main">
+      <a href="index.html#problem">The problem</a>
+      <a href="index.html#deliverable">What you get</a>
+      <a href="index.html#outside">Why outside</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#about">About</a>
+    </nav>
+  </header>
+
+  <div class="page-head">
+    <p class="label" style="margin-bottom:16px;">Engineering case studies</p>
+    <h1>Four problems, taken to a clear decision.</h1>
+    <p>Different domains — test engineering, subsea machinery, building physics, consumer products — but the same method every time: strip the problem to physics, generate genuinely different options, weigh them openly, and put a recommendation on the table. The same anatomy your 5-day concept study will have. <strong>Start with the flagship — <a href="#oyster">the Oyster microfibre filter</a></strong>, where the analysis predicted the exact failure point and the physical test then confirmed it.</p>
+  </div>
+
+  <!-- CHALK -->
+  <section class="study" id="chalk">
+    <span class="label">Study 01 · Constraint-driven problem-solving · Solo project</span>
+    <h2>Measuring the Unmeasured — chalk resistance</h2>
+    <p class="subtitle">Quantifying the mechanical limits of school chalk with no lab, no testing machine, and no reference data to compare against.</p>
+
+    <h3>The stuck problem</h3>
+    <p>Find the failure strength of ordinary chalk under five load types — bending, tension, shear, torsion and compression — using only household tools. Each load type had to be isolated cleanly, or the number would be meaningless.</p>
+
+    <div class="fig-pair">
+      <figure>
+        <img src="assets/chalk-compression-rig.jpg" alt="Improvised compression test rig: a metal cylinder held vertical by four guide wires on a wooden board" loading="lazy">
+        <figcaption>Compression rig — a piston in a slotted cylinder, kept axial by four guide wires, improvised from household parts.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/chalk-torsion-fracture.jpg" alt="Chalk sample showing a helicoidal fracture surface next to the torsion rig" loading="lazy">
+        <figcaption>Characteristic helicoidal fracture from the torsion rig — evidence the load was correctly isolated.</figcaption>
+      </figure>
+    </div>
+
+    <h3>Concepts generated</h3>
+    <p><strong>Bending &amp; tension — water-bottle load cells.</strong> A bottle filled gradually until fracture, weighed on a kitchen scale, gave a repeatable force. Two opposed constrictor knots kept the tension load perfectly axial.</p>
+    <p><strong>Pure shear — twin-plate guillotine, v2.</strong> The first rig let the sliding plate rotate, binding on its rails and adding friction that corrupted the reading. Fix: a larger contact surface and four guide rods instead of two, removing the parasitic moment.</p>
+    <p><strong>Torsion &amp; compression — isolation rigs.</strong> A grease-packed homemade bearing isolated torsion (residual friction measured and subtracted); a piston-and-cylinder press, borrowed from hydraulic-press principle, kept a high compressive load axial where a simple stack would topple.</p>
+
+    <h3>Outcome</h3>
+    <p>Consistent, physically sensible failure values across all five cases — with variance tightest for the simplest rig and widening as the apparatus grew, exactly as expected. The real deliverable: a documented method for reaching a defensible answer from nothing but improvised tools and clear reasoning.</p>
+
+    <div class="back-row"><a class="pdf-btn" href="pdf/chalk-resistance.pdf" download>Download this study (PDF) &darr;</a><a href="index.html#work">← Back to all studies</a></div>
+  </section>
+
+  <!-- ROVER -->
+  <section class="study" id="rover">
+    <span class="label">Study 02 · Structured concept generation · Solo project</span>
+    <h2>Seabed Drilling Rover</h2>
+    <p class="subtitle">Embodiment design for a remotely operated tool that drills the ocean floor — a novel machine with no off-the-shelf precedent to copy.</p>
+
+    <h3>The stuck problem</h3>
+    <p>Develop an early seabed-drilling concept into a defensible embodiment design: size the components, choose materials, identify failure modes, and estimate cost — all under deep uncertainty.</p>
+
+    <figure>
+      <img src="assets/rover-sketch.jpg" alt="Hand sketches of the seabed drilling rover: deployment sequence from a vessel and the device with labelled subsystems" loading="lazy">
+      <figcaption>Final concept and deployment sequence — sealed chassis, in-wheel motors, swing-arm suspension, modular drill unit.</figcaption>
+    </figure>
+
+    <h3>Concepts generated</h3>
+    <p><strong>Architecture — sealed chassis + modular drill.</strong> A cable-and-winch-deployed sealed chassis, with the drill mounted on silent-blocks like a car engine, isolating vibration and keeping the design modular.</p>
+    <p><strong>Mobility — in-wheel motors + swing arms.</strong> Four independent in-wheel motors, with Mars-rover-inspired swing-arm suspension that adapts to uneven seabed and locks flat while drilling.</p>
+    <p><strong>Material &amp; process selection.</strong> Ashby-chart selection against explicit objectives — leak-before-break for the chassis, hardness and corrosion resistance for the wheels, flexibility-without-failure for the arms — each paired with a realistic manufacturing route.</p>
+
+    <h3>De-risking the design</h3>
+    <ul>
+      <li><strong>Cost model:</strong> bottom-up estimate by subsystem, with adaptation factors for bespoke development.</li>
+      <li><strong>FMEA:</strong> every subsystem rated severity × probability — surfacing the winch cable and the chassis seal as the risks to control first.</li>
+    </ul>
+
+    <div class="back-row"><a class="pdf-btn" href="pdf/seabed-drilling-rover.pdf" download>Download this study (PDF) &darr;</a><a href="index.html#work">← Back to all studies</a></div>
+  </section>
+
+  <!-- TERMITE -->
+  <section class="study" id="termite">
+    <span class="label">Study 03 · Creative reframe / biomimicry · Solo project</span>
+    <h2>Passive Cooling from Termite Mounds</h2>
+    <p class="subtitle">Reframing a big-building cooling principle into a self-regulating family house.</p>
+
+    <h3>The stuck problem</h3>
+    <p>Building cooling consumes a large share of global energy and emissions — and the existing termite-inspired designs exist only at large commercial scale. The challenge: extract the underlying principles and apply them to an ordinary family house that regulates its own temperature with little or no active cooling.</p>
+
+    <figure>
+      <img src="assets/termite-house-sketch.jpg" alt="Hand sketch of a house cross-section showing the convective flow circuit: outer walls, internal high-thermal-mass walls, water sprayer and conduits" loading="lazy">
+      <figcaption>Convective-flow circuit — outer walls drive a stack-effect loop; air is cooled against high-thermal-mass walls and by evaporation, then delivered to the floor.</figcaption>
+    </figure>
+
+    <h3>How the thinking worked</h3>
+    <p><strong>Extract.</strong> Distil the termite mound to its transferable mechanisms — heat-induced convection between low- and high-thermal-mass structures, and Venturi-driven induced flow — rather than copying its shape.</p>
+    <p><strong>Translate.</strong> Re-express those as five concrete design features: an outer air-gap, high-thermal-mass internal walls and conduits, low-mass breathing outer walls, a connected chimney-and-flute network, and an optional water pulveriser for evaporative cooling.</p>
+
+    <h3>Concept &amp; sanity check</h3>
+    <p>The outer walls heat quickly and drive a stack-effect flow; air is cooled against the overnight-charged walls and by evaporation, then delivered to the floor. The loop reverses at night and stops in winter. Rather than asserting it would work, a first-order stack-effect calculation estimated a flow of ~0.46&nbsp;m/s for a 100&nbsp;m² house — enough to show viability and to flag a full thermo-fluids study as the honest next step.</p>
+
+    <div class="back-row"><a class="pdf-btn" href="pdf/termite-passive-cooling.pdf" download>Download this study (PDF) &darr;</a><a href="index.html#work">← Back to all studies</a></div>
+  </section>
+
+  <!-- OYSTER -->
+  <section class="study" id="oyster">
+    <span class="label">Flagship study · Concept-to-prototype arc · Team project, my contributions labelled</span>
+    <h2>The Oyster — microfibre filter</h2>
+    <p class="subtitle">A washing-machine filter to capture clothing microfibres before they reach the ocean.</p>
+    <p style="max-width:62ch;color:#27313D;font-size:16.5px;margin-top:12px;"><strong>The flagship concept study</strong> takes this same problem and writes it as a full client deliverable — four embodiments, the tradeoff matrix, the recommendation. <a href="sample-study-microfibre-capture.html">Read that version →</a> This page is the engineering story behind it: my role, the analysis, and the build.</p>
+
+    <h3>The stuck problem</h3>
+    <p>Synthetic clothing sheds microfibres too fine for conventional filters, and the products on the market are external add-ons with limited capture. The brief: design a filter that integrates into the washing machine itself, captures around 90% of fibres, survives the machine's full service life, and needs minimal user maintenance.</p>
+
+    <figure>
+      <img src="assets/oyster-cad.jpg" alt="Final CAD render of the Oyster: a cylindrical filter cartridge in a transparent housing mounted on a motor unit" loading="lazy">
+      <figcaption>Final CAD render — the spinning cylindrical filter integrated into a motor housing that mounts inside the machine.</figcaption>
+    </figure>
+
+    <h3>My role on the team</h3>
+    <p>On a five-person team I owned the torque calculations, the stress and fatigue FEA, the final mesh selection, the prototype manufacturing, and a share of the concept sketching. Pump-blade design and the CFD flow study were led by teammates — noted here as context where they connect to my work; the analysis and build below are mine.</p>
+
+    <h3>The core idea: spin the filter to multiply its area</h3>
+    <p>Instead of passing flow through a filter set across the pipe — limited to the pipe's cross-section — spin a cylindrical filter so the flow is driven radially outward against the full cylinder wall. The effective filter area becomes the cylinder's <em>surface</em>, not its cross-section: far more area in the same space, a longer time before the mesh clogs, fewer user interventions. And the cylinder packs into the dead space behind the machine's existing service hatch, leaving the exterior untouched.</p>
+
+    <h3>Sizing and structural validation (my work)</h3>
+    <p><strong>Mesh selection.</strong> A 25&nbsp;µm nylon mesh, weighed against pore size, mechanical strength, cost and recyclability — nylon beat stainless on mass and recyclability while meeting the pore and strength needs.</p>
+    <p><strong>Drive sizing.</strong> Worst-case start-up torque (blades saturated and stationary, snapping to full speed) sized the motor; the realistic case showed an inexpensive 12–18&nbsp;V DC motor was sufficient, keeping cost and added power draw negligible.</p>
+    <p><strong>FEA.</strong> Static and fatigue simulations on the outer case, inner case and propeller. The casing showed a large safety factor and a predicted life far beyond the washing machine's — and the analysis singled out the inner-case shaft crossing as the weakest point.</p>
+
+    <figure>
+      <img src="assets/oyster-prototype.jpg" alt="Four photos of the 3D-printed Oyster prototype: assembled unit, mesh cartridge, propeller insert, and the test rig with hoses" loading="lazy">
+      <figcaption>The 3D-printed prototype — assembled unit, mesh cartridge, propeller insert, and the rig connected for testing. On a repeat run the printed shaft snapped at exactly the location the FEA had flagged.</figcaption>
+    </figure>
+
+    <h3>Built and tested</h3>
+    <ul>
+      <li>3D-printed working prototype, tested with real microfibre-laden water at a representative head height: <strong>75.7% capture.</strong></li>
+      <li><strong>Predicted failure, confirmed:</strong> on a repeat run the printed shaft snapped — at exactly the location the FEA had flagged. Root cause: weak inter-layer shear from the print orientation. Fix: steel or a higher-modulus polymer, or injection moulding for the production part.</li>
+    </ul>
+
+    <h3>Outcome</h3>
+    <p>A full arc from an open brief to a costed concept to a tested physical prototype — including a failure the analysis predicted and the test then confirmed. That agreement between model and reality, failure included, is the most useful result an early-stage study can produce: it shows the engineering judgement was sound, not just lucky.</p>
+
+    <div class="back-row"><a class="pdf-btn" href="pdf/oyster-microfibre-filter.pdf" download>Download this study (PDF) &darr;</a><a href="sample-study-microfibre-capture.html">See the full concept study →</a><a href="index.html#work">← Back to all studies</a></div>
+  </section>
+
+  <!-- CLOSE -->
+  <section class="close">
+    <span class="label">Your decision next</span>
+    <h2 style="margin-top:14px;">This is what your decision gets — in a 5-day concept study.</h2>
+    <p>Concepts explored, tradeoffs named in a matrix, a recommendation you can defend upstairs. The same method, run with an outside perspective on your problem instead of mine. Start with a free 30-minute fit call — I'll tell you honestly whether a study would help.</p>
+    <a class="btn" href="https://calendly.com/vgengineering/30min">Book a free 30-min fit call</a>
+  </section>
+
+  <footer aria-label="Site information">
+    <div><span class="k">Firm</span>VG Engineering</div>
+    <div><span class="k">Location</span>Buchs SG, Switzerland</div>
+    <div><span class="k">Contact</span>vgengineerings@hotmail.com</div>
+    <div><span class="k">Sheet</span>2 of 2 · Rev A · 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
