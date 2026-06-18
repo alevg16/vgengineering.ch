@@ -267,6 +267,11 @@
   }
   .open-door h3{font-size:16px;font-weight:600;margin-bottom:6px;color:var(--navy);}
   .open-door p{font-size:15px;color:#3A4350;max-width:75ch;}
+  .sample-cta{margin-top:14px;border:1px solid var(--navy);background:var(--paper);padding:24px 28px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;}
+  .sample-cta h3{font-size:17px;font-weight:600;margin-bottom:6px;color:var(--navy);}
+  .sample-cta p{font-size:15px;color:#3A4350;max-width:64ch;}
+  .sample-cta .btn{white-space:nowrap;}
+  @media(max-width:640px){.sample-cta{flex-direction:column;align-items:flex-start;}}
 
   /* cover-letter pull quote */
   .pullquote{
@@ -430,6 +435,8 @@
     font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--steel);
     white-space:nowrap;padding-top:3px;text-align:right;
   }
+  .rung .price a, .rung p a{color:var(--navy);text-decoration:underline;text-underline-offset:2px;}
+  .rung .price a:hover, .rung p a:hover{color:var(--navy-deep);}
   @media(max-width:760px){
     .rung{grid-template-columns:1fr;gap:8px;}
     .rung .price{text-align:left;padding-top:0;}
@@ -458,7 +465,7 @@
     <p class="lede">I give your team <strong>3–4 alternative solution paths, a tradeoff matrix, and a clear recommendation</strong> — before you commit to one direction. An outside perspective that runs in parallel, so your team keeps the main project moving. Especially useful when the team is split between options, a prototype just failed, or one concept is quietly carrying the whole project.</p>
     <p class="lede" style="color:var(--steel);font-size:18px;">The plain version: you bring me a hard mechanical problem, I bring back three real ways to solve it. That's the work I love — and the reason I do this.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="https://calendly.com/vgengineering/20min">Book a free 20-min fit call</a>
+      <a class="btn btn-primary" href="https://calendly.com/vgengineering/30min">Book a free 30-min fit call</a>
       <a class="btn btn-ghost" href="#deliverable">See how it works</a>
     </div>
     <div class="dim">
@@ -569,6 +576,13 @@
       <h3>Real options and the reasoning to choose between them</h3>
       <p>A decision you can act on, pitch upstairs, or build from. This is a structured expansion of your design space — concept-level judgement, honestly scoped. It doesn't replace your internal engineering, and it never claims guaranteed manufacturability. If a concept earns it, <strong>follow-on development</strong> is scoped and quoted separately.</p>
     </div>
+    <div class="sample-cta">
+      <div>
+        <h3>See a complete sample study</h3>
+        <p>Not sure what the deliverable looks like? Here's a full concept study in the exact format you'd receive — a real problem worked end to end: the brief restated, constraints, four distinct concepts, the tradeoff matrix, and a recommendation.</p>
+      </div>
+      <a class="btn btn-primary" href="sample-study-microfibre-capture.html">Read the sample study →</a>
+    </div>
   </section>
 
   <!-- WHY AN OUTSIDE REVIEW -->
@@ -621,7 +635,7 @@
       <div class="rung">
         <div class="step-n">01</div>
         <div>
-          <h3>Free fit call <span class="free">20 min · no cost</span></h3>
+          <h3>Free fit call <span class="free">30 min · no cost</span></h3>
           <p>A diagnostic conversation: I ask about the decision you're weighing, understand the problem, and tell you honestly whether a review would help — or whether it wouldn't. Understanding the problem, not free advice.</p>
         </div>
         <div class="price">Free</div>
@@ -632,15 +646,15 @@
           <h3>Feasibility Opinion</h3>
           <p>A professional 1–2 day diagnostic on one issue — whether you're stuck on a problem or want an outside read on a design you've already drawn. I give you the likely root cause or the main risks, whether a full study is worth doing, what data is missing, and what to resolve first. Credited toward the full study if you proceed. A diagnostic read — it does not include the concepts or a redesign.</p>
         </div>
-        <div class="price">Request a quote</div>
+        <div class="price"><a href="https://tally.so/r/VLNXJl">Request a quote</a></div>
       </div>
       <div class="rung">
         <div class="step-n">03</div>
         <div>
           <h3>5-Day Concept Study</h3>
-          <p>The full review, run as a scheduled sprint week: 3–4 genuinely different concepts, the tradeoff matrix, a clear recommendation, and the walkthrough call. One PO, with a 48-hour go/no-go built in.</p>
+          <p>The full review, run as a scheduled sprint week: 3–4 genuinely different concepts, the tradeoff matrix, a clear recommendation, and the walkthrough call. One PO, with a 48-hour go/no-go built in. <a href="sample-study-microfibre-capture.html">See a full sample study →</a></p>
         </div>
-        <div class="price">Request a quote</div>
+        <div class="price"><a href="https://tally.so/r/VLNXJl">Request a quote</a></div>
       </div>
       <div class="rung">
         <div class="step-n">04</div>
@@ -701,13 +715,13 @@
       <span class="label">06 / Proof</span>
       <h2>The method, on real problems.</h2>
     </div>
-    <p class="prose" style="margin-bottom:34px;">Engineering case studies from my own work — different domains, same method: strip the problem to physics, generate genuinely distinct options, judge them honestly. The flagship below is the one I'd point to first — where the analysis predicted the exact failure point, and the physical test then confirmed it.</p>
+    <p class="prose" style="margin-bottom:34px;">Engineering case studies from my own work — different domains, same method: strip the problem to physics, generate genuinely distinct options, judge them honestly. The flagship below is the one I'd point to first — a flight-control system engineered and validated to a safety factor of 23, with an honest account of why it still didn't fire on the day.</p>
     <div class="work-grid">
-      <a class="work" href="portfolio.html#oyster">
-        <span class="label">Filtration · FEA predicted the failure</span>
-        <h3>The Oyster — microfibre filter</h3>
-        <p>A washing-machine-integrated filter to keep synthetic microfibres out of the ocean. FEA flagged the inner-case shaft as the weakest point — and on test, the prototype broke at exactly that spot. Model and reality agreed, failure included.</p>
-        <span class="more">Read the study →</span>
+      <a class="work" href="pdf/darwin-ii-airbrake.pdf" target="_blank" rel="noopener">
+        <span class="label">Active flight control · Honest post-mortem</span>
+        <h3>Darwin II — supersonic airbrake</h3>
+        <p>A servo-actuated, three-fin airbrake to stop a supersonic rocket at a 9 km apogee on purpose — validated in ANSYS to a safety factor of 23. On the flight it never deployed, and the honest reason wasn't the mechanism but a process decision. Rigour where it counts, stated plainly.</p>
+        <span class="more">Read the case study (PDF) →</span>
       </a>
       <a class="work" href="portfolio.html#chalk">
         <span class="label">Test engineering · First principles</span>
@@ -792,9 +806,9 @@
   <section class="close" id="contact">
     <span class="label">09 / Start</span>
     <h2 style="margin-top:14px;">Tell me the mechanical decision you're weighing.</h2>
-    <p>I'll tell you honestly if I can help. The first step is a free 20-minute fit call — no cost, no obligation, not a sales pitch. If a review makes sense, we scope it from there. If it doesn't, I'll say so.</p>
+    <p>I'll tell you honestly if I can help. The first step is a free 30-minute fit call — no cost, no obligation, not a sales pitch. If a review makes sense, we scope it from there. If it doesn't, I'll say so.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="https://calendly.com/vgengineering/20min">Book a free 20-min fit call</a>
+      <a class="btn btn-primary" href="https://calendly.com/vgengineering/30min">Book a free 30-min fit call</a>
       <a class="btn btn-ghost" href="https://tally.so/r/VLNXJl">Describe your problem instead</a>
     </div>
     <p class="contact-line">
