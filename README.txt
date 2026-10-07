@@ -16,5 +16,5 @@ Contact everywhere: alejandro@vgengineering.ch
 
 Not linked from the pages (kept for now): pdf/*.pdf, the duplicate PDFs in the
 repo root, assets/document_chalks.pdf and assets/termite-cooling-paper.pdf.
-The case-study PDFs still show the old "Concept study" header and an old contact
-address, so they need regenerating before they are linked again.
+The case-study PDFs now show alejandro@vgengineering.ch, but still carry the old
+"Concept study" header, so they are not linked from the pages yet.
