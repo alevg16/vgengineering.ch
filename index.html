@@ -2,828 +2,274 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VG Engineering — Independent mechanical design review (5-day concept study)</title>
-<meta name="description" content="Independent mechanical design review, delivered as a fixed-scope 5-day concept study. Your team gets 3–4 genuinely different solution paths, a tradeoff matrix, and a clear recommendation — before you commit to one direction.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>VG Engineering — Mechanical product development, from concept to manufacturing</title>
+<meta name="description" content="Mechanical development partner in Buchs SG, Switzerland. I develop products with you from the first sketch to the first production run: concept, design, prototype and manufacturing. Start at any stage.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="VG Engineering — From concept to manufacturing">
+<meta property="og:description" content="Mechanical development partner: concept, design, prototype and manufacturing. Start at any stage.">
+<meta property="og:url" content="https://vgengineering.ch/">
+<meta property="og:image" content="https://vgengineering.ch/assets/oyster-prototype.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230E2A4A'/%3E%3Ctext x='16' y='21.5' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='14' fill='white'%3EVG%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --navy:#0E2A4A;
-    --navy-deep:#081B33;
-    --ink:#0B0E13;
-    --paper:#FFFFFF;
-    --paper-dim:#F5F7FA;
-    --hairline:#D7DEE7;
-    --steel:#5A7491;
-    --focus:#1B4F8A;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *,*::before,*::after{animation:none!important;transition:none!important;}
-  }
-  body{
-    font-family:'IBM Plex Sans',system-ui,sans-serif;
-    color:var(--ink);
-    background:var(--paper);
-    line-height:1.6;
-    font-size:17px;
-  }
-  ::selection{background:var(--navy);color:var(--paper);}
-  a{color:var(--navy);}
-  a:focus-visible,button:focus-visible{outline:2px solid var(--focus);outline-offset:3px;}
-
-  /* ---- drawing-sheet frame ---- */
-  .sheet{
-    max-width:1140px;
-    margin:0 auto;
-    border-left:1px solid var(--hairline);
-    border-right:1px solid var(--hairline);
-    min-height:100vh;
-  }
-  .mono{font-family:'IBM Plex Mono',monospace;}
-  .label{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11px;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:var(--steel);
-  }
-
-  /* ---- header ---- */
-  header{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:18px 40px;
-    border-bottom:1px solid var(--hairline);
-    position:sticky;top:0;background:rgba(255,255,255,.94);
-    backdrop-filter:blur(6px);
-    z-index:10;
-  }
-  .wordmark{
-    font-family:'IBM Plex Sans Condensed',sans-serif;
-    font-weight:700;font-size:19px;letter-spacing:.02em;
-    color:var(--ink);text-decoration:none;
-    display:flex;align-items:baseline;gap:9px;
-  }
-  .wordmark .vg{
-    background:var(--navy);color:var(--paper);
-    padding:2px 8px 3px;
-  }
-  nav{display:flex;gap:28px;}
-  nav a{
-    text-decoration:none;color:var(--ink);
-    font-size:14px;font-weight:500;
-  }
-  nav a:hover{color:var(--navy);text-decoration:underline;text-underline-offset:5px;}
-  @media(max-width:760px){
-    header{padding:14px 20px;}
-    nav{display:none;}
-  }
-
-  /* ---- hero ---- */
-  .hero{
-    padding:90px 40px 70px;
-    border-bottom:1px solid var(--hairline);
-    position:relative;
-  }
-  .hero h1{
-    font-family:'IBM Plex Sans Condensed',sans-serif;
-    font-weight:700;
-    font-size:clamp(42px,6.4vw,76px);
-    line-height:1.02;
-    letter-spacing:-.01em;
-    max-width:13ch;
-  }
-  .hero h1 em{
-    font-style:normal;color:var(--navy);
-    box-shadow:inset 0 -0.32em 0 rgba(14,42,74,.12);
-  }
-  .hero p.lede{
-    margin-top:28px;max-width:54ch;font-size:19px;color:#27313D;
-  }
-  .cta-row{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap;}
-  .btn{
-    display:inline-block;text-decoration:none;
-    font-weight:600;font-size:15px;
-    padding:14px 26px;border:1px solid var(--navy);
-  }
-  .btn-primary{background:var(--navy);color:var(--paper);}
-  .btn-primary:hover{background:var(--navy-deep);}
-  .btn-ghost{background:transparent;color:var(--navy);}
-  .btn-ghost:hover{background:var(--paper-dim);}
-
-  /* dimension tick under hero headline */
-  .dim{
-    margin-top:46px;display:flex;align-items:center;gap:10px;
-    max-width:430px;
-  }
-  .dim .line{flex:1;height:1px;background:var(--steel);position:relative;}
-  .dim .line::before,.dim .line::after{
-    content:"";position:absolute;top:-4px;width:1px;height:9px;background:var(--steel);
-  }
-  .dim .line::before{left:0;} .dim .line::after{right:0;}
-  .dim span{white-space:nowrap;}
-
-  /* title block — the signature */
-  .titleblock{
-    position:absolute;right:40px;bottom:-1px;
-    border:1px solid var(--hairline);border-bottom:none;
-    background:var(--paper);
-    display:grid;grid-template-columns:auto auto;
-    font-family:'IBM Plex Mono',monospace;font-size:11px;
-  }
-  .titleblock div{
-    padding:7px 14px;border-top:1px solid var(--hairline);
-  }
-  .titleblock div:nth-child(odd){
-    color:var(--steel);border-right:1px solid var(--hairline);
-    letter-spacing:.1em;text-transform:uppercase;
-  }
-  .titleblock div:nth-child(-n+2){border-top:none;}
-  @media(max-width:760px){
-    .hero{padding:64px 20px 56px;}
-    .titleblock{display:none;}
-  }
-
-  /* ---- sections ---- */
-  section{padding:80px 40px;border-bottom:1px solid var(--hairline);}
-  @media(max-width:760px){section{padding:60px 20px;}}
-  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:36px;}
-  .sec-head h2{
-    font-family:'IBM Plex Sans Condensed',sans-serif;
-    font-weight:700;font-size:clamp(28px,3.6vw,40px);line-height:1.1;
-  }
-  .prose{max-width:62ch;font-size:18px;color:#27313D;}
-  .prose + .prose{margin-top:18px;}
-  .prose strong{color:var(--ink);}
-
-  /* what you get */
-  .deliverable{
-    margin-top:44px;
-    border:1px solid var(--hairline);
-    display:grid;grid-template-columns:1fr 1fr;
-  }
-  .deliverable .cell{
-    padding:26px 28px;border-top:1px solid var(--hairline);
-  }
-  .deliverable .cell:nth-child(-n+2){border-top:none;}
-  .deliverable .cell:nth-child(odd){border-right:1px solid var(--hairline);}
-  .deliverable h3{
-    font-size:16px;font-weight:600;margin-bottom:6px;color:var(--navy);
-  }
-  .deliverable p{font-size:15px;color:#3A4350;}
-  @media(max-width:760px){
-    .deliverable{grid-template-columns:1fr;}
-    .deliverable .cell{border-right:none!important;}
-    .deliverable .cell:nth-child(2){border-top:1px solid var(--hairline);}
-  }
-
-  /* how it works — true sequence, numbering justified */
-  .steps{margin-top:10px;display:grid;gap:0;}
-  .step{
-    display:grid;grid-template-columns:84px 1fr;gap:26px;
-    padding:30px 0;border-top:1px solid var(--hairline);
-  }
-  .step:first-child{border-top:none;}
-  .step .no{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:13px;color:var(--steel);padding-top:5px;
-  }
-  .step h3{font-size:19px;font-weight:600;margin-bottom:6px;}
-  .step p{max-width:60ch;color:#3A4350;font-size:16px;}
-  @media(max-width:760px){.step{grid-template-columns:1fr;gap:8px;}}
-
-  /* portfolio */
-  .work-grid{
-    margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:0;
-    border:1px solid var(--hairline);
-  }
-  .work{
-    padding:30px;min-height:210px;display:flex;flex-direction:column;gap:10px;
-    border-top:1px solid var(--hairline);
-  }
-  .work:nth-child(-n+2){border-top:none;}
-  .work:nth-child(odd){border-right:1px solid var(--hairline);}
-  .work h3{font-size:19px;font-weight:600;}
-  .work p{font-size:15px;color:#3A4350;flex:1;}
-  .work .label{margin-bottom:2px;}
-  @media(max-width:760px){
-    .work-grid{grid-template-columns:1fr;}
-    .work{border-right:none!important;}
-    .work:nth-child(2){border-top:1px solid var(--hairline);}
-  }
-  .work-note{margin-top:22px;font-size:15px;color:var(--steel);}
-  /* founder's note / testimonials */
-  .note-card{
-    border:1px solid var(--hairline);
-    border-left:3px solid var(--navy);
-    padding:32px 34px;max-width:760px;
-  }
-  .note-card p{font-size:17px;color:#27313D;max-width:64ch;}
-  .note-card p + p{margin-top:14px;}
-  .note-card .sign{
-    margin-top:22px;font-weight:600;color:var(--ink);
-  }
-  .note-card .sign span{
-    display:block;font-weight:400;font-size:14px;color:var(--steel);margin-top:2px;
-  }
-  .testi-grid{
-    display:grid;grid-template-columns:1fr 1fr;gap:0;
-    border:1px solid var(--hairline);
-  }
-  .testi{padding:28px 30px;border-top:1px solid var(--hairline);}
-  .testi:nth-child(-n+2){border-top:none;}
-  .testi:nth-child(odd){border-right:1px solid var(--hairline);}
-  .testi blockquote{
-    font-size:17px;line-height:1.5;color:var(--ink);font-style:italic;
-  }
-  .testi .who{
-    margin-top:16px;font-weight:600;font-size:14px;color:var(--ink);
-  }
-  .testi .who span{
-    display:block;font-weight:400;color:var(--steel);margin-top:1px;
-  }
-  @media(max-width:760px){
-    .testi-grid{grid-template-columns:1fr;}
-    .testi{border-right:none!important;}
-    .testi:nth-child(2){border-top:1px solid var(--hairline);}
-  }
-  a.work{text-decoration:none;color:inherit;transition:background .15s ease;}
-  a.work:hover{background:var(--paper-dim);}
-  a.work .more{
-    font-family:'IBM Plex Mono',monospace;font-size:12.5px;
-    color:var(--navy);font-weight:500;letter-spacing:.04em;
-  }
-  a.work:hover .more{text-decoration:underline;text-underline-offset:4px;}
-
-  /* open door panel */
-  .open-door{
-    margin-top:0;border:1px solid var(--hairline);border-top:none;
-    background:var(--paper-dim);
-    padding:26px 28px;
-  }
-  .open-door h3{font-size:16px;font-weight:600;margin-bottom:6px;color:var(--navy);}
-  .open-door p{font-size:15px;color:#3A4350;max-width:75ch;}
-  .sample-cta{margin-top:14px;border:1px solid var(--navy);background:var(--paper);padding:24px 28px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;}
-  .sample-cta h3{font-size:17px;font-weight:600;margin-bottom:6px;color:var(--navy);}
-  .sample-cta p{font-size:15px;color:#3A4350;max-width:64ch;}
-  .sample-cta .btn{white-space:nowrap;}
-  @media(max-width:640px){.sample-cta{flex-direction:column;align-items:flex-start;}}
-
-  /* cover-letter pull quote */
-  .pullquote{
-    margin-top:32px;border-left:3px solid var(--navy);
-    padding:6px 0 6px 24px;
-  }
-  .pullquote blockquote{
-    font-size:18px;line-height:1.55;color:var(--ink);
-    font-style:italic;max-width:54ch;
-  }
-  .pullquote .label{display:block;margin-top:12px;}
-
-  /* about */
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
-  @media(max-width:860px){.about-grid{grid-template-columns:1fr;}}
-  .cred{
-    border:1px solid var(--hairline);
-  }
-  .cred li{
-    list-style:none;display:grid;grid-template-columns:120px 1fr;
-    padding:14px 20px;border-top:1px solid var(--hairline);
-    font-size:15px;gap:14px;
-  }
-  .cred li:first-child{border-top:none;}
-  .cred .label{padding-top:3px;}
-
-  /* contact / close */
-  .close{
-    background:var(--navy);color:var(--paper);
-    border-bottom:none;
-  }
-  .close h2{
-    font-family:'IBM Plex Sans Condensed',sans-serif;
-    font-weight:700;font-size:clamp(30px,4.4vw,52px);line-height:1.05;
-    max-width:18ch;
-  }
-  .close p{margin-top:20px;max-width:54ch;color:#C8D4E2;font-size:18px;}
-  .close .btn{border-color:var(--paper);}
-  .close .btn-primary{background:var(--paper);color:var(--navy);}
-  .close .btn-primary:hover{background:#E8EDF3;}
-  .close .btn-ghost{color:var(--paper);}
-  .close .btn-ghost:hover{background:rgba(255,255,255,.08);}
-  .close .label{color:#9FB3C9;}
-  .contact-line{margin-top:40px;font-size:15px;color:#C8D4E2;}
-  .contact-line a{color:var(--paper);}
-
-  /* footer title block strip */
-  footer{
-    border-top:1px solid var(--hairline);
-    display:grid;grid-template-columns:repeat(4,1fr);
-    font-family:'IBM Plex Mono',monospace;font-size:11px;
-  }
-  footer div{
-    padding:12px 20px;border-right:1px solid var(--hairline);
-  }
-  footer div:last-child{border-right:none;}
-  footer .k{color:var(--steel);letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:2px;}
-  @media(max-width:760px){
-    footer{grid-template-columns:1fr 1fr;}
-    footer div:nth-child(2){border-right:none;}
-  }
-
-  /* plain-language three steps */
-  .plain-steps{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
-    border:1px solid var(--hairline);margin-top:6px;
-  }
-  .pstep{padding:28px 26px;position:relative;}
-  .pstep:not(:last-child){border-right:1px solid var(--hairline);}
-  .pstep .pn{
-    font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--steel);
-    letter-spacing:.06em;
-  }
-  .pstep .arrow{
-    font-family:'IBM Plex Sans',sans-serif;color:var(--navy);font-weight:600;
-  }
-  .pstep h3{font-family:'IBM Plex Sans Condensed',sans-serif;font-size:20px;font-weight:700;margin:8px 0 6px;color:var(--navy);}
-  .pstep p{font-size:15px;color:#3A4350;}
-  @media(max-width:680px){
-    .plain-steps{grid-template-columns:1fr;}
-    .pstep:not(:last-child){border-right:none;border-bottom:1px solid var(--hairline);}
-  }
-  /* ethos / why I do this */
-  .ethos blockquote{
-    font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:600;
-    font-size:clamp(20px,2.4vw,27px);line-height:1.34;color:var(--navy);
-    max-width:30ch;margin-top:4px;
-  }
-  .ethos .body{font-size:17px;color:#27313D;max-width:60ch;}
-  .ethos .body p + p{margin-top:13px;}
-  .ethos-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;align-items:start;}
-  @media(max-width:760px){.ethos-grid{grid-template-columns:1fr;gap:24px;}}
-
-  /* distinctive one-liner band */
-  .oneliner{
-    background:var(--navy);color:var(--paper);
-    padding:34px 0;
-  }
-  .oneliner .inner{
-    max-width:1100px;margin:0 auto;padding:0 40px;
-    display:flex;align-items:baseline;gap:22px;
-  }
-  .oneliner .mk{
-    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;
-    text-transform:uppercase;color:#7FA8D4;white-space:nowrap;flex:none;padding-top:4px;
-  }
-  .oneliner p{
-    font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:600;
-    font-size:clamp(19px,2.3vw,26px);line-height:1.32;color:var(--paper);max-width:48ch;
-  }
-  @media(max-width:680px){
-    .oneliner .inner{flex-direction:column;gap:10px;padding:0 24px;}
-  }
-
-  /* why-grid third leg uses same .why styling */
-    margin-top:10px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;
-    border:1px solid var(--hairline);
-  }
-  .why{padding:30px 28px;border-top:1px solid var(--hairline);}
-  .why:nth-child(-n+3){border-top:none;}
-  .why:not(:last-child){border-right:1px solid var(--hairline);}
-  .why .no{
-    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--steel);
-    letter-spacing:.06em;
-  }
-  .why h3{font-size:18px;font-weight:600;margin:8px 0 8px;color:var(--navy);}
-  .why p{font-size:15px;color:#3A4350;}
-  @media(max-width:760px){
-    .why-grid{grid-template-columns:1fr;}
-    .why{border-right:none!important;}
-    .why:nth-child(n+2){border-top:1px solid var(--hairline);}
-  }
-
-  /* killer objection block */
-  .objection{
-    margin-top:34px;border:1px solid var(--hairline);border-left:3px solid var(--navy);
-    background:var(--paper-dim);padding:28px 30px;max-width:760px;
-  }
-  .objection .q{font-weight:600;color:var(--ink);font-size:17px;}
-  .objection p{font-size:16px;color:#27313D;max-width:64ch;}
-  .objection p + p{margin-top:12px;}
-
-  /* offer ladder */
-  .ladder{margin-top:10px;display:grid;gap:0;border:1px solid var(--hairline);}
-  .rung{
-    display:grid;grid-template-columns:54px 1fr auto;gap:22px;align-items:start;
-    padding:26px 28px;border-top:1px solid var(--hairline);
-  }
-  .rung:first-child{border-top:none;}
-  .rung .step-n{
-    font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--steel);
-    padding-top:3px;
-  }
-  .rung h3{font-size:18px;font-weight:600;margin-bottom:5px;}
-  .rung h3 .free{
-    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
-    text-transform:uppercase;color:#2E7D52;margin-left:10px;vertical-align:1px;
-  }
-  .rung p{font-size:15px;color:#3A4350;max-width:64ch;}
-  .rung .price{
-    font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--steel);
-    white-space:nowrap;padding-top:3px;text-align:right;
-  }
-  .rung .price a, .rung p a{color:var(--navy);text-decoration:underline;text-underline-offset:2px;}
-  .rung .price a:hover, .rung p a:hover{color:var(--navy-deep);}
-  @media(max-width:760px){
-    .rung{grid-template-columns:1fr;gap:8px;}
-    .rung .price{text-align:left;padding-top:0;}
-  }
-</style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<div class="sheet">
+<a class="skip" href="#main">Skip to content</a>
 
-  <header>
+<header class="site-header">
+  <div class="wrap">
     <a class="wordmark" href="#top"><span class="vg">VG</span> ENGINEERING</a>
-    <nav aria-label="Main">
-      <a href="#how-plain">How it works</a>
-      <a href="#deliverable">What you get</a>
-      <a href="#outside">Why outside</a>
-      <a href="#offer">Offer</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a href="#process">Process</a>
       <a href="#work">Work</a>
+      <a href="#ways">Working together</a>
       <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </nav>
-  </header>
+  </div>
+</header>
+
+<main id="main">
 
   <!-- HERO -->
   <div class="hero" id="top">
-    <p class="label" style="margin-bottom:22px;">Independent mechanical design review · Delivered as a 5-day concept study · For SME engineering teams</p>
-    <h1>Independent mechanical design review, as a <em>fixed-scope 5-day concept study.</em></h1>
-    <p class="lede">I give your team <strong>3–4 alternative solution paths, a tradeoff matrix, and a clear recommendation</strong> — before you commit to one direction. An outside perspective that runs in parallel, so your team keeps the main project moving. Especially useful when the team is split between options, a prototype just failed, or one concept is quietly carrying the whole project.</p>
-    <p class="lede" style="color:var(--steel);font-size:18px;">The plain version: you bring me a hard mechanical problem, I bring back three real ways to solve it. That's the work I love — and the reason I do this.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="https://calendly.com/vgengineering/30min">Book a free 30-min fit call</a>
-      <a class="btn btn-ghost" href="#deliverable">See how it works</a>
-    </div>
-    <div class="dim">
-      <div class="line" aria-hidden="true"></div>
-      <span class="label">decision in → recommendation out: a 5-working-day sprint</span>
-      <div class="line" aria-hidden="true"></div>
-    </div>
+    <div class="wrap">
+      <p class="label">Mechanical development partner · Buchs SG, Switzerland</p>
+      <h1>From concept<br>to <span>manufacturing.</span></h1>
+      <div class="hero-row">
+        <p class="lede">I develop mechanical products with you, from the first sketch to parts coming off the line. Start at any stage. I carry the engineering through to production.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact">Start a project</a>
+          <a class="btn btn-ghost" href="#work">See the work</a>
+        </div>
+      </div>
+      <p class="exp">Hilti · BMW MINI · VAT · MEng Edinburgh</p>
 
-    <div class="titleblock" aria-hidden="true">
-      <div>Project</div><div>Your design decision</div>
-      <div>Drawn by</div><div>A. Vargas Gonzalez</div>
-      <div>Scale</div><div>5-day concept study</div>
-      <div>Rev</div><div>A — outside view</div>
+      <div class="tiles">
+        <figure class="tile" style="--i:0"><img src="assets/rover-sketch.jpg" alt="Hand sketch of a seabed drilling rover and its deployment sequence"><figcaption><b>Sketch</b><span>Seabed rover</span></figcaption></figure>
+        <figure class="tile" style="--i:1"><img src="assets/darwin-airbrake-cad.jpg" alt="CAD render of the Darwin II three-flap airbrake"><figcaption><b>CAD</b><span>Darwin II airbrake</span></figcaption></figure>
+        <figure class="tile" style="--i:2"><img class="photo" src="assets/oyster-prototype.jpg" alt="3D-printed red prototype of the Oyster microfibre filter"><figcaption><b>Prototype</b><span>Oyster filter</span></figcaption></figure>
+      </div>
     </div>
   </div>
 
-  <!-- DISTINCTIVE ONE-LINER -->
-  <div class="oneliner">
-    <div class="inner">
-      <span class="mk">What every review includes</span>
-      <p>3–4 genuinely different solution paths, compared openly on cost, complexity, manufacturability and risk — before a recommendation is made.</p>
-    </div>
-  </div>
+  <!-- PROCESS / STAGE PICKER -->
+  <section class="process" id="process">
+    <div class="wrap">
+      <p class="label">Process</p>
+      <h2 class="big">Where is your product right now?</h2>
+      <p class="intro">Start wherever you are. I take it from there to production.</p>
 
-  <!-- HOW IT WORKS — PLAIN -->
-  <section id="how-plain">
-    <div class="sec-head">
-      <span class="label">00 / In plain terms</span>
-      <h2>Bring me a hard problem. Leave with three real ways to solve it.</h2>
-    </div>
-    <div class="plain-steps">
-      <div class="pstep">
-        <div class="pn">01 · You</div>
-        <h3>Bring the problem</h3>
-        <p>A mechanical decision you're weighing, a design that's fighting you, a prototype that failed. However rough — a clear description is enough to start.</p>
-      </div>
-      <div class="pstep">
-        <div class="pn">02 · Me <span class="arrow">→</span></div>
-        <h3>I work it from the outside</h3>
-        <p>Five focused days. I strip it back to the physics and explore genuinely different routes — including ones your supply chain would never suggest.</p>
-      </div>
-      <div class="pstep">
-        <div class="pn">03 · You <span class="arrow">→</span></div>
-        <h3>Leave with three options</h3>
-        <p>3–4 real solution paths, compared honestly, with the one I'd back and why. A decision you can act on — not a pile of homework.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ETHOS / WHY I DO THIS -->
-  <section id="ethos" class="ethos">
-    <div class="ethos-grid">
-      <div>
-        <span class="label" style="display:block;margin-bottom:14px;">Why I do this</span>
-        <blockquote>I like hard problems, and I don't trust the obvious answer just because it's the one everyone reaches for.</blockquote>
-      </div>
-      <div class="body">
-        <p>I became an engineer because I love the moment a problem looks stuck and you realise there's a way through that nobody in the room has seen yet. Finding that way — questioning the assumption everyone treats as fixed, borrowing a trick from a completely different industry — is the part of the work I'd do for free.</p>
-        <p>VG Engineering is just that instinct, made available to people who have a genuinely hard mechanical problem and want someone outside their own walls to throw real options at it. I'm not here to sell process or hours. I'm here to help you solve something — and, where it helps, to challenge the status quo your project has quietly settled into.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- THE PROBLEM -->
-  <section id="problem">
-    <div class="sec-head">
-      <span class="label">01 / The problem</span>
-      <h2>The hardest alternative to see is the one from outside the frame.</h2>
-    </div>
-    <p class="prose">Good engineers work inside the assumptions, suppliers, methods and history their project has accumulated. That's not a flaw — it's what deep familiarity does, and it's how the work gets done. But it also makes the genuinely different alternative, the one from outside that whole frame, the hardest to see from the inside.</p>
-    <p class="prose">It bites hardest at decision points — especially when the team is split between options, a prototype just failed, or one concept is quietly carrying the whole project. <strong>The fix isn't more hours from the same vantage point — it's a different one, in parallel.</strong></p>
-  </section>
-
-  <!-- WHAT YOU GET -->
-  <section id="deliverable">
-    <div class="sec-head">
-      <span class="label">02 / What you get</span>
-      <h2>One concept study. A decision you can act on.</h2>
-    </div>
-    <p class="prose">A single concept-study PDF, delivered as a fixed-scope 5-working-day sprint — built the way a good design review should run:</p>
-    <div class="deliverable">
-      <div class="cell">
-        <h3>Your problem, restated</h3>
-        <p>The problem in my words, so we're aligned on exactly what "solved" means before any concept is judged.</p>
-      </div>
-      <div class="cell">
-        <h3>Constraints &amp; success criteria</h3>
-        <p>The yardstick every concept is measured against — pinned down and agreed, not assumed.</p>
-      </div>
-      <div class="cell">
-        <h3>3–4 genuinely different concepts</h3>
-        <p>Distinct routes to the goal, not variations on one idea. Each with a sketch, how it works, why it fits, named tradeoffs — cost, complexity, manufacturability, risk — and its maturity: proven, needs prototyping, or speculative.</p>
-      </div>
-      <div class="cell">
-        <h3>A tradeoff matrix</h3>
-        <p>All concepts scored side by side in one table, so the decision is visible, not buried in prose.</p>
-      </div>
-      <div class="cell">
-        <h3>A clear recommendation</h3>
-        <p>Which one I'd back, why, and the first concrete step to de-risk it — a decision you can defend upward.</p>
-      </div>
-      <div class="cell">
-        <h3>A walkthrough call</h3>
-        <p>A short call to talk through the study and challenge it. You own the deliverable and the concepts.</p>
-      </div>
-    </div>
-    <div class="open-door">
-      <h3>Real options and the reasoning to choose between them</h3>
-      <p>A decision you can act on, pitch upstairs, or build from. This is a structured expansion of your design space — concept-level judgement, honestly scoped. It doesn't replace your internal engineering, and it never claims guaranteed manufacturability. If a concept earns it, <strong>follow-on development</strong> is scoped and quoted separately.</p>
-    </div>
-    <div class="sample-cta">
-      <div>
-        <h3>See a complete sample study</h3>
-        <p>Not sure what the deliverable looks like? Here's a full concept study in the exact format you'd receive — a real problem worked end to end: the brief restated, constraints, four distinct concepts, the tradeoff matrix, and a recommendation.</p>
-      </div>
-      <a class="btn btn-primary" href="sample-study-microfibre-capture.html">Read the sample study →</a>
-    </div>
-  </section>
-
-  <!-- WHY AN OUTSIDE REVIEW -->
-  <section id="outside">
-    <div class="sec-head">
-      <span class="label">03 / Why an outside review</span>
-      <h2>Your engineers know the product best — that's exactly why an outside review helps.</h2>
-    </div>
-    <p class="prose" style="margin-bottom:8px;">They carry the full history, constraints and assumptions. I come in without that baggage, generate alternative paths quickly, and your team decides what's actually usable. It complements a good internal team; it doesn't replace it. Three things make it work, whatever the reason a decision has stalled:</p>
-    <div class="why-grid">
-      <div class="why">
-        <div class="no">01</div>
-        <h3>Fresh perspective</h3>
-        <p>No existing design to defend, no habitual supplier — so the alternatives tend to be genuinely different, not variations on the current approach. I've worked across joining tech, automotive, and precision vacuum hardware; most engineers have seen one ecosystem, so the options I bring come from places your team doesn't watch.</p>
-      </div>
-      <div class="why">
-        <div class="no">02</div>
-        <h3>Parallel bandwidth</h3>
-        <p>Pulling two seniors onto lateral exploration costs you a week on the main deliverable. I run off your critical path, in parallel — your team keeps the main project moving and loses no time.</p>
-      </div>
-      <div class="why">
-        <div class="no">03</div>
-        <h3>Decision structure</h3>
-        <p>Tradeoffs made explicit and scored — cost, complexity, manufacturability, risk — so the choice is made against reality instead of argued informally. You get a decision document, not a debate.</p>
-      </div>
-    </div>
-
-    <div class="objection">
-      <p class="q">"Why wouldn't I just put two of my own engineers on this for a few days?"</p>
-      <p>Your engineers know this product far better than I will — that's not in question, and it's exactly why this works. They carry the full history and constraints, which is what makes it hard to step outside the paths already explored. I come in without that baggage: alternatives that tend to be genuinely different, explored in parallel so you lose no momentum, and handed back as options scored on cost, complexity, manufacturability and risk.</p>
-      <p><strong>This doesn't replace your team's depth. It adds the one thing depth crowds out — distance — and hands the decision back to them, faster.</strong></p>
-    </div>
-  </section>
-
-  <!-- SECONDARY OBJECTION -->
-  <section id="context-objection" style="padding-top:0;">
-    <div class="objection" style="margin-top:0;">
-      <p class="q">"An outsider can't understand our context in five days."</p>
-      <p>Correct — and I'm not trying to. I won't know your product the way your team does, and the deliverable isn't a production-ready design. It's a structured expansion of the design space, with every assumption clearly marked, so your team can decide faster. The outside view is the value precisely because it's from outside; your team owns the domain integration.</p>
-    </div>
-  </section>
-
-  <!-- OFFER LADDER -->
-  <section id="offer">
-    <div class="sec-head">
-      <span class="label">04 / How to start</span>
-      <h2>A staged path — lowest commitment first.</h2>
-    </div>
-    <div class="ladder">
-      <div class="rung">
-        <div class="step-n">01</div>
-        <div>
-          <h3>Free fit call <span class="free">30 min · no cost</span></h3>
-          <p>A diagnostic conversation: I ask about the decision you're weighing, understand the problem, and tell you honestly whether a review would help — or whether it wouldn't. Understanding the problem, not free advice.</p>
+      <div class="stages" data-stages data-draw>
+        <div class="tabs" role="tablist" aria-label="Development stage">
+          <button role="tab" id="t1" aria-controls="p1"><span class="no">01</span><span class="name">Concept</span><span class="from">you have an idea</span></button>
+          <button role="tab" id="t2" aria-controls="p2"><span class="no">02</span><span class="name">Design</span><span class="from">you have a concept</span></button>
+          <button role="tab" id="t3" aria-controls="p3"><span class="no">03</span><span class="name">Prototype</span><span class="from">you have a design</span></button>
+          <button role="tab" id="t4" aria-controls="p4"><span class="no">04</span><span class="name">Production</span><span class="from">you have a prototype</span></button>
         </div>
-        <div class="price">Free</div>
+        <div class="bar" aria-hidden="true"><i></i></div>
       </div>
-      <div class="rung">
-        <div class="step-n">02</div>
-        <div>
-          <h3>Feasibility Opinion</h3>
-          <p>A professional 1–2 day diagnostic on one issue — whether you're stuck on a problem or want an outside read on a design you've already drawn. I give you the likely root cause or the main risks, whether a full study is worth doing, what data is missing, and what to resolve first. Credited toward the full study if you proceed. A diagnostic read — it does not include the concepts or a redesign.</p>
-        </div>
-        <div class="price"><a href="https://tally.so/r/VLNXJl">Request a quote</a></div>
-      </div>
-      <div class="rung">
-        <div class="step-n">03</div>
-        <div>
-          <h3>5-Day Concept Study</h3>
-          <p>The full review, run as a scheduled sprint week: 3–4 genuinely different concepts, the tradeoff matrix, a clear recommendation, and the walkthrough call. One PO, with a 48-hour go/no-go built in. <a href="sample-study-microfibre-capture.html">See a full sample study →</a></p>
-        </div>
-        <div class="price"><a href="https://tally.so/r/VLNXJl">Request a quote</a></div>
-      </div>
-      <div class="rung">
-        <div class="step-n">04</div>
-        <div>
-          <h3>Follow-on development</h3>
-          <p>If you want to take a concept further — detailed design, prototyping — it's scoped and quoted separately, never bundled into the flat fee.</p>
-        </div>
-        <div class="price">Scoped separately</div>
-      </div>
-    </div>
-    <div class="open-door" style="margin-top:30px;">
-      <h3>How the sprint works</h3>
-      <p>Each study runs as a scheduled <strong>sprint week</strong> with a fixed input deadline — the five working days begin once the brief, required inputs and scope are agreed, not on signature. There's a <strong>48-hour go/no-go</strong>: if within the first two days I find the problem isn't tractable or I can't add real value, I say so, bill only a nominal assessment fee, and release the rest. One buying decision, protection built in for both sides.</p>
-    </div>
-  </section>
 
-  <!-- HOW WE WORK / ENGAGEMENT -->
-  <section id="process">
-    <div class="sec-head">
-      <span class="label">05 / How we work</span>
-      <h2>The boring, important part — so there are no surprises.</h2>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <div class="no">NDA</div>
-        <div>
-          <h3>Confidentiality, both ways</h3>
-          <p>A mutual NDA is available and welcome. Anything you share stays confidential — full stop.</p>
+      <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1">
+        <figure><img src="assets/termite-house-sketch.jpg" alt="Hand sketch of a house cross-section with a passive convective cooling loop"><figcaption>Concept sketch · passive-cooling house</figcaption></figure>
+        <div class="panel-text">
+          <h3>You have an idea or a rough sketch.</h3>
+          <dl class="blocks">
+            <div><dt>I do</dt><dd>Explore 3–4 genuinely different concepts, size them from first principles, and check feasibility and cost early.</dd></div>
+            <div><dt>You get</dt><dd>One chosen direction, with the reasoning and the risks on paper.</dd></div>
+          </dl>
         </div>
       </div>
-      <div class="step">
-        <div class="no">IP</div>
-        <div>
-          <h3>You own the deliverable</h3>
-          <p>You own the paid concept study and the concepts in it — yours to build, develop, or take elsewhere. (I keep the right to show anonymised work in my portfolio, never your confidential details.)</p>
+      <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+        <figure><img src="assets/darwin-airbrake-cad.jpg" alt="CAD render of the Darwin II three-flap airbrake"><figcaption>CAD · Darwin II three-flap airbrake</figcaption></figure>
+        <div class="panel-text">
+          <h3>You have a concept you believe in.</h3>
+          <dl class="blocks">
+            <div><dt>I do</dt><dd>CAD in NX or SolidWorks, drawings with GD&amp;T and tolerance stacks, FEA where it matters, and DFM from day one.</dd></div>
+            <div><dt>You get</dt><dd>A complete design package a supplier can quote and build.</dd></div>
+          </dl>
         </div>
       </div>
-      <div class="step">
-        <div class="no">SCOPE</div>
-        <div>
-          <h3>Assumptions stated honestly</h3>
-          <p>This is concept-level judgement, not detailed design — and not a guarantee of manufacturability. Every assumption I make is marked, so your team stays in control of what to validate.</p>
+      <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+        <figure><img class="photo" src="assets/chalk-torsion-rig.jpg" alt="Wooden torsion test rig holding a chalk sample" loading="lazy"><figcaption>Purpose-built torsion rig · chalk resistance study</figcaption></figure>
+        <div class="panel-text">
+          <h3>You have a design that needs proving.</h3>
+          <dl class="blocks">
+            <div><dt>I do</dt><dd>3D-printed and machined prototypes, purpose-built test rigs, and validation against your requirements.</dd></div>
+            <div><dt>You get</dt><dd>Hardware that works, and failure modes found while they are still cheap to fix.</dd></div>
+          </dl>
         </div>
       </div>
-      <div class="step">
-        <div class="no">CONFLICT</div>
-        <div>
-          <h3>Clear professional boundaries</h3>
-          <p>I operate as approved secondary employment and do not work in vacuum or semiconductor valve technology. If a request sits too close to that line, I'll say so before we start.</p>
+      <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
+        <figure>
+          <div class="net" role="img" aria-label="Diagram: your product goes to VG Engineering, which manages machining, moulding, sheet metal, 3D printing, your suppliers and partner engineers">
+            <div class="net-node">Your product</div>
+            <span class="net-link" style="--i:0"></span>
+            <div class="net-node net-hub">VG Engineering<span>design + supplier management</span></div>
+            <span class="net-link" style="--i:1"></span>
+            <ul class="net-list">
+              <li style="--i:0">CNC machining</li><li style="--i:1">Injection moulding</li><li style="--i:2">Sheet metal &amp; laser</li>
+              <li style="--i:3">3D printing</li><li style="--i:4">Your suppliers</li><li style="--i:5">Partner engineers</li>
+            </ul>
+          </div>
+          <figcaption>Production network · my suppliers, yours, or both</figcaption>
+        </figure>
+        <div class="panel-text">
+          <h3>You have a prototype that works.</h3>
+          <dl class="blocks">
+            <div><dt>I do</dt><dd>Refine the design for production, source and manage suppliers, approve first articles, and support the ramp-up.</dd></div>
+            <div><dt>You get</dt><dd>Parts in production, and a supply chain you can keep running.</dd></div>
+          </dl>
         </div>
       </div>
     </div>
   </section>
 
   <!-- WORK -->
-  <section id="work">
-    <div class="sec-head">
-      <span class="label">06 / Proof</span>
-      <h2>The method, on real problems.</h2>
+  <section class="work band" id="work">
+    <div class="wrap">
+      <p class="label">Selected work · Team project</p>
+      <h2 class="big">Oyster: from CAD to a tested prototype.</h2>
+      <p class="intro">A filter that mounts inside a washing machine and spins to multiply its filter area. Team project of five. I owned the FEA, drive sizing, mesh selection and the prototype build.</p>
+
+      <div class="gallery" data-gallery>
+        <div class="g-track" tabindex="0" aria-label="Oyster project images, use arrow keys to browse">
+          <figure class="g-slide"><img src="assets/oyster-exploded.jpg" alt="Exploded CAD assembly of the Oyster filter"><figcaption><span class="label">01 · Exploded assembly</span>Motor, housing, bearing cap, mesh cylinder and propeller insert on one shaft axis.</figcaption></figure>
+          <figure class="g-slide"><img src="assets/oyster-cad.jpg" alt="Final CAD render of the Oyster filter in its housing" loading="lazy"><figcaption><span class="label">02 · Final CAD</span>Packs into the dead space behind the machine's service hatch.</figcaption></figure>
+          <figure class="g-slide"><img src="assets/oyster-fea.jpg" alt="Fatigue FEA result of the filter cage with a colour scale" loading="lazy"><figcaption><span class="label">03 · Fatigue FEA</span>The analysis flagged the shaft crossing as the low-life region.</figcaption></figure>
+          <figure class="g-slide"><img src="assets/oyster-prototype.jpg" alt="Four photos of the 3D-printed Oyster prototype and its test rig" loading="lazy"><figcaption><span class="label">04 · Prototype &amp; test</span>The printed shaft later broke exactly where the FEA predicted.</figcaption></figure>
+        </div>
+        <div class="g-controls">
+          <div class="g-steps"><button type="button" data-step>Exploded</button><button type="button" data-step>CAD</button><button type="button" data-step>FEA</button><button type="button" data-step>Prototype</button></div>
+          <div class="g-nav"><span data-count>1 / 4</span><button type="button" data-prev aria-label="Previous image">←</button><button type="button" data-next aria-label="Next image">→</button></div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b>75.7 %</b><span>fibre capture in the first prototype test</span></div>
+        <div class="stat"><b>25 µm</b><span>nylon filter mesh, chosen on pore size, strength and recyclability</span></div>
+        <div class="stat"><b>12–18 V</b><span>low-cost DC drive, sized from worst-case start-up torque</span></div>
+      </div>
+
+      <div class="more-head">
+        <h3>More projects</h3>
+        <a class="btn btn-ghost" href="portfolio.html">All projects →</a>
+      </div>
+      <div class="pcards">
+        <a class="pcard" href="portfolio.html#darwin"><img src="assets/darwin-airbrake-cad.jpg" alt="" loading="lazy"><span>Flight hardware</span><strong>Darwin II airbrake</strong></a>
+        <a class="pcard" href="portfolio.html#chalk"><img class="photo" src="assets/chalk-compression-rig.jpg" alt="" loading="lazy"><span>Test engineering</span><strong>Five chalk test rigs</strong></a>
+        <a class="pcard" href="portfolio.html#rover"><img src="assets/rover-sketch.jpg" alt="" loading="lazy"><span>Concept &amp; FMEA</span><strong>Seabed drilling rover</strong></a>
+        <a class="pcard" href="portfolio.html#termite"><img src="assets/termite-house-sketch.jpg" alt="" loading="lazy"><span>Thermal concept</span><strong>Termite-mound cooling</strong></a>
+      </div>
     </div>
-    <p class="prose" style="margin-bottom:34px;">Engineering case studies from my own work — different domains, same method: strip the problem to physics, generate genuinely distinct options, judge them honestly. The flagship below is the one I'd point to first — a flight-control system engineered and validated to a safety factor of 23, with an honest account of why it still didn't fire on the day.</p>
-    <div class="work-grid">
-      <a class="work" href="pdf/darwin-ii-airbrake.pdf" target="_blank" rel="noopener">
-        <span class="label">Active flight control · Honest post-mortem</span>
-        <h3>Darwin II — supersonic airbrake</h3>
-        <p>A servo-actuated, three-fin airbrake to stop a supersonic rocket at a 9 km apogee on purpose — validated in ANSYS to a safety factor of 23. On the flight it never deployed, and the honest reason wasn't the mechanism but a process decision. Rigour where it counts, stated plainly.</p>
-        <span class="more">Read the case study (PDF) →</span>
-      </a>
-      <a class="work" href="portfolio.html#chalk">
-        <span class="label">Test engineering · First principles</span>
-        <h3>Chalk resistance</h3>
-        <p>Measuring the failure stresses of ordinary chalk in bending, traction, shear, torsion and compression — by designing and building five test rigs from workshop scrap. A defensible answer from nothing but improvised tools and clear reasoning.</p>
-        <span class="more">Read the study →</span>
-      </a>
-      <a class="work" href="portfolio.html#termite">
-        <span class="label">Thermal · Cross-domain reframe</span>
-        <h3>Termite-mound passive cooling</h3>
-        <p>Translating the convection principles of termite mounds into a passive cooling architecture for housing — chimney-flute geometry, thermal mass, and stack-effect sizing from first principles.</p>
-        <span class="more">Read the study →</span>
-      </a>
-      <a class="work" href="portfolio.html#rover">
-        <span class="label">Subsea · Concept costed &amp; FMEA'd</span>
-        <h3>Seabed drilling rover</h3>
-        <p>Concept-to-embodiment design of a tethered 4-wheel-drive seabed drilling vehicle: in-wheel motors, swing-arm suspension, material selection, a bottom-up cost model and a full failure-mode analysis — from scratch.</p>
-        <span class="more">Read the study →</span>
-      </a>
+  </section>
+
+  <!-- WAYS OF WORKING -->
+  <section class="ways" id="ways">
+    <div class="wrap">
+      <p class="label">Working together</p>
+      <h2 class="big">Four ways to work together.</h2>
+      <div class="who"><span class="label">Who I work with</span><span class="chip">SMEs without an R&amp;D team</span><span class="chip">Hardware startups</span><span class="chip">Inventors</span><span class="chip">Engineering teams that need capacity</span></div>
+
+      <div class="wcards">
+        <article class="wcard">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="15" width="8" height="10" rx="1.5"/><rect x="16" y="15" width="8" height="10" rx="1.5"/><rect x="29" y="15" width="8" height="10" rx="1.5"/><path d="M11 20h5M24 20h5"/></svg>
+          <h3>Phased project</h3>
+          <p>Concept, design, prototype, production. Each phase is quoted on its own, with a go/no-go before the next, so you only commit to what has earned it.</p>
+        </article>
+        <article class="wcard">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 28h34"/><circle cx="8" cy="28" r="2.2"/><circle cx="20" cy="28" r="2.2"/><circle cx="32" cy="28" r="2.2"/><path d="M20 5v15M15 15l5 5 5-5"/></svg>
+          <h3>Start at any stage</h3>
+          <p>Already have a concept, a CAD model or a prototype? I pick it up where it is: design, DFM, testing or industrialisation.</p>
+        </article>
+        <article class="wcard">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M31 14a12 12 0 0 0-21-3M9 26a12 12 0 0 0 21 3"/><path d="M10 5v6h6M30 35v-6h-6"/></svg>
+          <h3>Ongoing partnership</h3>
+          <p>Your part-time development team, on a monthly basis. For companies that need mechanical engineering regularly, but not a full-time hire.</p>
+        </article>
+        <article class="wcard hl">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="15" cy="20" r="10"/><circle cx="25" cy="20" r="10"/></svg>
+          <h3>Co-ownership</h3>
+          <p>A lower fee in exchange for a royalty per unit or a share in the product. Case by case.</p>
+          <a href="#partner">How it works ↓</a>
+        </article>
+      </div>
+      <p class="terms">Every project is quoted individually. A mutual NDA is available from the first conversation, and IP terms are agreed in writing before work starts.</p>
     </div>
-    <p class="work-note">A named client testimonial will live here once the first reviews are in. Until then, the work speaks for the method.</p>
+  </section>
+
+  <!-- CO-OWNERSHIP -->
+  <section class="partner tint" id="partner">
+    <div class="wrap">
+      <p class="label">Co-ownership</p>
+      <h2 class="big">Partner, not just a supplier.</h2>
+      <div class="partner-grid">
+        <div>
+          <p class="intro">Some products are worth more than a fee. When I believe in yours, I can take part of my payment as a share of its success. We carry the risk together, and we share the upside.</p>
+          <dl class="options">
+            <div><dt>Royalty per unit<small>Preferred</small></dt><dd>A reduced fee plus a small percentage of every unit sold. Simple to set up, and it rewards a product that sells.</dd></div>
+            <div><dt>Equity</dt><dd>A reduced fee in exchange for a share of the product or the company. Suits startups with more upside than cash.</dd></div>
+            <div><dt>How it's decided</dt><dd>Case by case, after a first look at the product. Everything is agreed in writing before work starts.</dd></div>
+          </dl>
+        </div>
+        <div class="deal" data-draw role="img" aria-label="Illustration: a standard project is paid fully as a fee; with a royalty or equity deal, part of the fee is replaced by a share of the product's success">
+          <div class="deal-title">How the payment is split</div>
+          <div class="deal-row"><div class="name">Standard project</div><div class="deal-bar"><i class="fee" style="--w:100%">Fee</i></div></div>
+          <div class="deal-row"><div class="name">Royalty</div><div class="deal-bar"><i class="fee" style="--w:52%">Reduced fee</i><i class="share">+ % of every unit sold</i></div></div>
+          <div class="deal-row"><div class="name">Equity</div><div class="deal-bar"><i class="fee" style="--w:52%">Reduced fee</i><i class="share">+ share of the product</i></div></div>
+          <p class="deal-note">Illustrative only. The actual split is agreed per project.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about">
-    <div class="sec-head">
-      <span class="label">07 / Who runs the review</span>
-      <h2>Alejandro Vargas Gonzalez</h2>
-    </div>
-    <div class="about-grid">
-      <div>
-        <p class="prose">I'm a mechanical engineer based in Buchs, Switzerland, with around six years across three industries — joining technology at Hilti, automotive at BMW MINI, and now precision vacuum hardware at VAT. That spread is the point: most engineers spend a career inside one ecosystem and borrow solutions from within it. I've worked across several, so the angle I bring isn't just "an outsider" — it's an outsider who's seen how the same problem gets solved in industries yours doesn't watch.</p>
-        <p class="prose">What actually drives me is simpler than any of that. I like hard problems, and I like proving the obvious answer wrong. I started VG Engineering because the most satisfying work I've ever done is taking a problem someone thought was stuck and handing back a route they hadn't considered. That's the whole point of this — to help people solve genuinely difficult things, and to challenge the status quo a project has quietly settled into.</p>
-        <p class="prose">By day I design vacuum-valve technology for semiconductor tools — work where a tolerance is a contract and "almost works" doesn't exist. This service runs alongside it, as approved secondary employment, deliberately outside that field.</p>
-        <div class="pullquote">
-          <blockquote>"Your engineers know the product best — that's exactly why an external review helps. I add the one thing depth crowds out: distance. Genuinely different options, explored in parallel, and the decision handed back to the team that knows the product."</blockquote>
+  <section class="about" id="about">
+    <div class="wrap">
+      <p class="label">About</p>
+      <h2 class="big">Alejandro Vargas Gonzalez</h2>
+      <div class="about-grid">
+        <div>
+          <p class="intro">Mechanical engineer in Buchs SG, Switzerland. About six years across three industries: joining technology at Hilti, automotive at BMW MINI, and precision vacuum hardware at VAT. That spread is useful, because the answer to your problem often already exists in an industry you don't watch.</p>
+          <blockquote class="quote">I like hard problems, and I don't trust the obvious answer just because it's the one everyone reaches for.</blockquote>
+          <p class="txt">I started VG Engineering to build products, not reports: to take an idea all the way to parts in production, alongside clients who want a partner in it.</p>
         </div>
-        <p class="prose">My approach is honesty-led. If I don't think a review will help you, I'll say so on the free call — before you pay, not after.</p>
-      </div>
-      <ul class="cred">
-        <li><span class="label">Now</span><span>Mechanical Development Engineer, VAT Group — vacuum valves for semiconductor tools</span></li>
-        <li><span class="label">Before</span><span>Development Engineer, Hilti (joining &amp; anchor technology) · Parts Quality, BMW MINI Oxford</span></li>
-        <li><span class="label">Education</span><span>MEng (Hons) Mechanical Engineering, University of Edinburgh</span></li>
-        <li><span class="label">Toolbox</span><span>Concept design · ISO GPS / GD&amp;T · ANSYS thermal &amp; fluids · Siemens NX, SolidWorks · Rapid prototyping &amp; 3D-printed functional models · DFM &amp; root-cause analysis</span></li>
-        <li><span class="label">Languages</span><span>Spanish · English</span></li>
-      </ul>
-    </div>
-  </section>
-  
-<!-- TRUST / TESTIMONIALS -->
-  <section id="trust">
-    <div class="sec-head">
-      <span class="label">08 / Straight talk</span>
-      <h2>A note, while the testimonials are still being earned.</h2>
-    </div>
-    <div class="note-card">
-      <p>I'll be honest with you: VG Engineering is new, so I don't have a wall of client quotes yet. I'd rather tell you that plainly than pad this page with anything thin.</p>
-      <p>What I can offer instead is a straight promise. You'll get my full attention and my honest judgement — including the tradeoffs and the weaknesses, not just the optimistic version. If I don't think a review will bring you genuine value, I'll tell you on the free call, before you pay. And the case studies above are real work: my own thinking, my own sketches, my own failures documented alongside the wins.</p>
-      <p>The early clients who take a chance on a new service get my best work and my deepest gratitude — and this space is being kept for their words. If you'd like to be one of them, tell me the decision you're weighing.</p>
-      <div class="sign">Alejandro Vargas Gonzalez<span>Founder, VG Engineering</span></div>
-    </div>
-
-    <!-- ========================================================= -->
-    <!-- WHEN YOU HAVE TESTIMONIALS: delete the .note-card above    -->
-    <!-- and un-comment the grid below. Fill in 2 or 4 entries.     -->
-    <!-- ========================================================= -->
-    <!--
-    <div class="testi-grid">
-      <div class="testi">
-        <blockquote>"Their exact words here — short, specific, about a result or how it felt to work with you. Under ~40 words is ideal."</blockquote>
-        <div class="who">Full Name<span>Role, Company</span></div>
-      </div>
-      <div class="testi">
-        <blockquote>"Second testimonial. Specific beats glowing — 'gave us three options we hadn't considered' lands harder than 'great work'."</blockquote>
-        <div class="who">Full Name<span>Role, Company</span></div>
+        <ul class="cred">
+          <li><span class="label">Now</span><span>Mechanical development engineer, VAT Group: vacuum valves for semiconductor tools</span></li>
+          <li><span class="label">Before</span><span>Development engineer, Hilti (joining &amp; anchor technology) · Parts quality, BMW MINI Oxford</span></li>
+          <li><span class="label">Education</span><span>MEng (Hons) Mechanical Engineering, University of Edinburgh</span></li>
+          <li><span class="label">Toolbox</span><span>Concept design · ISO GPS / GD&amp;T · ANSYS · Siemens NX, SolidWorks · Rapid prototyping &amp; 3D-printed functional models · DFM &amp; root-cause analysis</span></li>
+          <li><span class="label">Languages</span><span>Spanish · English</span></li>
+        </ul>
       </div>
     </div>
-    -->
   </section>
-  
-  <!-- CLOSE -->
-  <section class="close" id="contact">
-    <span class="label">09 / Start</span>
-    <h2 style="margin-top:14px;">Tell me the mechanical decision you're weighing.</h2>
-    <p>I'll tell you honestly if I can help. The first step is a free 30-minute fit call — no cost, no obligation, not a sales pitch. If a review makes sense, we scope it from there. If it doesn't, I'll say so.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="https://calendly.com/vgengineering/30min">Book a free 30-min fit call</a>
-      <a class="btn btn-ghost" href="https://tally.so/r/VLNXJl">Describe your problem instead</a>
+
+  <!-- CONTACT -->
+  <section class="contact tint" id="contact">
+    <div class="wrap">
+      <p class="label">Start a project</p>
+      <h2 class="big">Have a product to build?</h2>
+      <p class="intro">Tell me what it is and where it stands today. I'll tell you honestly how I can help, and which way of working fits.</p>
+      <div class="mail">
+        <a class="addr" id="addr" href="mailto:alejandro@vgengineering.ch">alejandro@vgengineering.ch</a>
+        <button type="button" data-copy="alejandro@vgengineering.ch" data-target="addr">Copy</button>
+      </div>
+      <div class="include"><span class="label">Helpful to include</span><span class="chip">What it does</span><span class="chip">Where it stands</span><span class="chip">Target cost &amp; volume</span><span class="chip">Timeline</span></div>
+      <p class="social"><a href="https://linkedin.com/in/alejandro-vargas-gonzalez">LinkedIn →</a></p>
     </div>
-    <p class="contact-line">
-      Prefer email? <a href="mailto:vgengineerings@hotmail.com">vgengineerings@hotmail.com</a> ·
-      <a href="https://linkedin.com/in/alejandro-vargas-gonzalez">LinkedIn</a>
-    </p>
   </section>
 
-  <footer aria-label="Site information">
-    <div><span class="k">Firm</span>VG Engineering</div>
-    <div><span class="k">Location</span>Buchs SG, Switzerland</div>
-    <div><span class="k">Contact</span>vgengineerings@hotmail.com</div>
-    <div><span class="k">Sheet</span>1 of 1 · Rev A · 2026</div>
-  </footer>
+</main>
 
-</div>
+<footer class="site-footer">
+  <div class="wrap"><span>VG Engineering</span><span>Buchs SG, Switzerland</span><a href="mailto:alejandro@vgengineering.ch">alejandro@vgengineering.ch</a><span>© 2026</span></div>
+</footer>
+
+<script src="assets/site.js"></script>
 </body>
 </html>
